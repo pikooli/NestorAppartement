@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import url from "../Utlis/Url";
+import api from "../Utlis/ApiRequest";
 
 function useLogic() {
-  useEffect(() => {}, []);
-  return {};
+  const [data, setData] = useState(null);
+  useEffect(async () => {
+    api.get(url.apartment.base).then((data) => console.log(data));
+  }, []);
+
+  return { data };
 }
 
 export default function App({}) {
-  const {} = useLogic();
+  const { data } = useLogic();
 
   return (
     <div>
