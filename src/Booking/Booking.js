@@ -13,8 +13,8 @@ export default function App({}) {
 
   return (
     <div>
-      <h2>Customer</h2>;<Link to="/DetailsCustomer">DetailsCustomer</Link>
-      <Link to="/CreateEditCustomer">CreateEditCustomer</Link>
+      <h2>Bookings</h2>;<Link to="/booking/aaaa">DetailsBooking</Link>
+      <Link to="/createBooking">CreateEditBooking</Link>
     </div>
   );
 }

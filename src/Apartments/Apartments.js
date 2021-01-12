@@ -19,9 +19,9 @@ export default function App({}) {
   return (
     <div>
       <h2>Appartments</h2>
-      <Link to="/CreateEditApartment">CreateEditApartement</Link>
-      <Link to="/DetailsApartment">DetailsApartment</Link>
-      <Link to="/CreateEditRoom">CreateEditRoom</Link>
+      <Link to="/apartment/test">DetailsApartment</Link>
+      <Link to="/createApartment">CreateEditApartement</Link>
+      <Link to="/createRoom">CreateEditRoom</Link>
     </div>
   );
 }

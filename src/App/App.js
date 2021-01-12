@@ -2,17 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //
 import Apartments from "../Apartments/Apartments";
-import CreateEditApartment from "../Apartments/CreateEditApartment/CreateEditApartment";
+import CreateApartment from "../Apartments/CreateApartment/CreateApartment";
 import DetailsApartment from "../Apartments/DetailsApartment/DetailsApartment";
-import CreateEditRoom from "../Apartments/CreateEditRoom/CreateEditRoom";
+import CreateRoom from "../Apartments/CreateRoom/CreateRoom";
 //
-import Customers from "../Custormers/Customers";
-import DetailsCustomer from "../Custormers/DetailsCustomer/DetailsCustomer";
-import CreateEditCustomer from "../Custormers/CreateEditCustomer/CreateEditCustomer";
+import Client from "../Client/Client";
+import DetailsClient from "../Client/DetailsClient/DetailsClient";
+import CreateClient from "../Client/CreateClient/CreateClient";
 //
-import Reservations from "../Reservations/Reservations";
-import DetailsReservation from "../Reservations/DetailsReservation/DetailsReservation";
-import CreateEditReservation from "../Reservations/CreateEditReservation/CreateEditReservation";
+import Booking from "../Booking/Booking";
+import DetailsBooking from "../Booking/DetailsBooking/DetailsBooking";
+import CreateBooking from "../Booking/CreateBooking/CreateBooking";
 
 import Cookies from "js-cookie";
 
@@ -27,13 +27,13 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/apartments">apartments</Link>
+              <Link to="/apartment">apartment</Link>
             </li>
             <li>
-              <Link to="/Customers">Customers</Link>
+              <Link to="/client">Client</Link>
             </li>
             <li>
-              <Link to="/Reservations">Reservations</Link>
+              <Link to="/booking">Booking</Link>
             </li>
           </ul>
         </nav>
@@ -41,35 +41,35 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Apartments">
+          <Route exact path="/apartment">
             <Apartments />
           </Route>
-          <Route path="/CreateEditApartment">
-            <CreateEditApartment />
-          </Route>
-          <Route path="/DetailsApartment">
+          <Route exact path="/apartment/:id">
             <DetailsApartment />
           </Route>
-          <Route path="/CreateEditRoom">
-            <CreateEditRoom />
+          <Route path="/createApartment/">
+            <CreateApartment />
           </Route>
-          <Route path="/Customers">
-            <Customers />
+          <Route exact path="/createRoom/">
+            <CreateRoom />
           </Route>
-          <Route path="/DetailsCustomer">
-            <DetailsCustomer />
+          <Route exact path="/client">
+            <Client />
           </Route>
-          <Route path="/CreateEditCustomer">
-            <CreateEditCustomer />
+          <Route exact path="/client/:id">
+            <DetailsClient />
           </Route>
-          <Route path="/Reservations">
-            <Reservations />
+          <Route exact path="/createClient">
+            <CreateClient />
           </Route>
-          <Route path="/DetailsReservation">
-            <DetailsReservation />
+          <Route exact path="/booking">
+            <Booking />
           </Route>
-          <Route path="/CreateEditReservation">
-            <CreateEditReservation />
+          <Route exact path="/booking/:id">
+            <DetailsBooking />
+          </Route>
+          <Route exact path="/createBooking">
+            <CreateBooking />
           </Route>
           <Route path="/">
             <Home />
