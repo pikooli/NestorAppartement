@@ -13,7 +13,6 @@ function useLogic() {
     setApartment(ReduxActions.getDetailsAp());
   }, []);
 
-  console.log(apartment);
   return { id, apartment };
 }
 
