@@ -10,6 +10,7 @@ function useLogic() {
   const [index, setIndex] = useState(0);
   const [displayApartements, setDisplayApartements] = useState(null);
   const [searchValue, setSearchValue] = useState({});
+  const [searchResult, setSearchResult] = useState(null);
 
   useEffect(() => {
     api.get(url.apartment.base).then((data) => {
@@ -37,11 +38,20 @@ function useLogic() {
   }
 
   function renderApartmentsArray() {
-    if (displayApartements)
+    if (searchResult)
+      return searchResult.map((apartment) => {
+        return apartmentDisplay(apartment);
+      });
+    else if (displayApartements)
       return displayApartements.map((apartment) => {
         return apartmentDisplay(apartment);
       });
     else return null;
+  }
+
+  function triggerSearch() {
+    setSearchResult(searchApartment(apartments, searchValue));
+    setSearchValue({});
   }
 
   return {
@@ -50,6 +60,9 @@ function useLogic() {
     activeChangePagination,
     checkNotEndIndex,
     setSearchValue,
+    searchValue,
+    searchResult,
+    triggerSearch,
   };
 }
 
@@ -60,18 +73,23 @@ export default function App() {
     activeChangePagination,
     checkNotEndIndex,
     setSearchValue,
+    searchValue,
+    searchResult,
+    triggerSearch,
   } = useLogic();
   return (
     <div className="container">
-      <h2 className="textCenter">Apartments</h2>
+      <h1 className="textCenter">Apartments</h1>
       {createApartmentBtn()}
-      {searchEntry(setSearchValue)}
-      <div className="card ">
+      {searchEntry(searchValue, setSearchValue, triggerSearch)}
+      <div className="card mb-2">
         <ul className="list-group list-group-flush">
           {renderApartmentsArray()}
         </ul>
       </div>
-      {changePagination(index, activeChangePagination, checkNotEndIndex)}
+      {!searchResult
+        ? changePagination(index, activeChangePagination, checkNotEndIndex)
+        : null}
     </div>
   );
 }

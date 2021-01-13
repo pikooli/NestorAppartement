@@ -82,7 +82,7 @@ export default function App() {
 
   return (
     <Router>
-      <div>
+      <div className="main">
         {navbar()}
         <Switch>
           <Route exact path="/apartment">
@@ -93,6 +93,9 @@ export default function App() {
           </Route>
           <Route path="/createApartment/">
             <CreateApartment />
+          </Route>
+          <Route exact path="/createRoom/:id">
+            <CreateRoom />
           </Route>
           <Route exact path="/createRoom/">
             <CreateRoom />
@@ -119,8 +122,8 @@ export default function App() {
             <Apartments />
           </Route>
         </Switch>
-        {footer()}
       </div>
+      {footer()}
     </Router>
   );
 }
