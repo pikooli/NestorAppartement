@@ -42,7 +42,9 @@ export function createApartmentForm(
             className="form-control"
             id="number"
             placeholder="number"
-            value={createApValue.number ? createApValue.number : ""}
+            value={
+              createApValue && createApValue.number ? createApValue.number : ""
+            }
             onChange={(e) => setNumber(e.target.value)}
           ></input>
         </label>
@@ -55,7 +57,9 @@ export function createApartmentForm(
             className="form-control"
             id="name"
             placeholder="number"
-            value={createApValue.name ? createApValue.name : ""}
+            value={
+              createApValue && createApValue.name ? createApValue.name : ""
+            }
             onChange={(e) => setName(e.target.value)}
           ></input>
         </label>
@@ -82,6 +86,7 @@ function displayRoom(room, index, removeRoom) {
 }
 
 export function displayRooms(rooms, removeRoom) {
+  if (!rooms) return null;
   return (
     <div className="card">
       <ul className="list-group list-group-flush">

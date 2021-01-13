@@ -8,14 +8,12 @@ import {
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { modalAlert } from "../../Utlis/Alert";
-import createApartmentAction from "../../Redux/Actions/createApartmentAction";
+import ReduxActions from "../../Redux/Actions/ReduxActions";
 
 function useLogic() {
-  const [createApValue, setCreateApValue] = useState(
-    createApartmentAction.getState()
-  );
-
+  const [createApValue, setCreateApValue] = useState(ReduxActions.getAp());
   useEffect(() => {}, []);
+
   function submitForm(e) {
     e.preventDefault();
     if (
@@ -42,33 +40,36 @@ function useLogic() {
 
   function removeRoom(e, index) {
     e.preventDefault();
-    createApartmentAction.deleteRoom(index);
     setCreateApValue((val) => {
-      return {
+      let newObj = {
         ...val,
         rooms: val.rooms.map((room, key) => {
           return index !== key ? room : null;
         }),
       };
+      ReduxActions.setAp(newObj);
+      return newObj;
     });
   }
 
   function setName(name) {
     setCreateApValue((val) => {
+      ReduxActions.setAp({ ...val, name: name });
+
       return { ...val, name: name };
     });
-    createApartmentAction.setAparmentName(name);
-  }
-  function resetFunction() {
-    createApartmentAction.reset();
-    setCreateApValue({});
   }
 
   function setNumber(number) {
     setCreateApValue((val) => {
-      return { ...val, number: number };
+      ReduxActions.setAp({ ...val, number: number });
+      return;
     });
-    createApartmentAction.setAparmentNumber(number);
+  }
+
+  function resetFunction() {
+    ReduxActions.deleteAp();
+    setCreateApValue({});
   }
 
   return {

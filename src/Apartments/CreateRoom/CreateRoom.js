@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import createApartmentAction from "../../Redux/Actions/createApartmentAction";
+import ReduxActions from "../../Redux/Actions/ReduxActions";
 import { goBackBtn, createRoomForm } from "./Display";
 
 function useLogic() {
   const [createRoomValue, setCreateRoomValue] = useState({});
-  const ApValue = createApartmentAction.getState();
+  const ApValue = ReduxActions.getState();
 
   useEffect(() => {}, []);
 
@@ -15,8 +15,8 @@ function useLogic() {
       createRoomValue.area &&
       createRoomValue.price
     ) {
-      createApartmentAction.addRoom(createRoomValue);
-      console.log(ApValue);
+      ReduxActions.addRoom(createRoomValue);
+
       if (ApValue.apID) window.location.href = `/apartment/${ApValue.apID}`;
       else window.location.href = `/createApartment`;
     }
