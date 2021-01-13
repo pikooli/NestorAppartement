@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //
-import Apartments from "../Apartments/Apartments";
+import Apartments from "../Apartments/Apartements/Apartments";
 import CreateApartment from "../Apartments/CreateApartment/CreateApartment";
 import DetailsApartment from "../Apartments/DetailsApartment/DetailsApartment";
 import CreateRoom from "../Apartments/CreateRoom/CreateRoom";
@@ -14,32 +14,76 @@ import Booking from "../Booking/Booking";
 import DetailsBooking from "../Booking/DetailsBooking/DetailsBooking";
 import CreateBooking from "../Booking/CreateBooking/CreateBooking";
 
-import Cookies from "js-cookie";
-
 export default function App() {
-  Cookies.set("test", "test");
+  function navbar() {
+    return (
+      <nav className="navbar navbar-expand-lg navbar-dark pe-2">
+        <a href="/">
+          <img
+            src="https://www.chez-nestor.com/_nuxt/img/186473d.png"
+            alt="logo of the website"
+          />
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul className="nav">
+            <li className="nav-item">
+              <Link className="nav-link active" to="/">
+                <i className="fas fa-home fa-2x"></i>{" "}
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" to="/client">
+                <i className="fas fa-user-alt fa-2x"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/booking">
+                <i className="fas fa-calendar-check fa-2x"></i>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
+  }
+
+  function footer() {
+    return (
+      <footer className="position-relative">
+        <a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          className="position-absolute bottom-0 start-50 translate-middle-x"
+        >
+          <img
+            src="https://i.pinimg.com/originals/19/39/ac/1939ace417a6eaf6f8e654d7dd597821.jpg"
+            width="20px"
+            height="20px"
+            alt="cat"
+          />
+        </a>
+      </footer>
+    );
+  }
+
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/apartment">apartment</Link>
-            </li>
-            <li>
-              <Link to="/client">Client</Link>
-            </li>
-            <li>
-              <Link to="/booking">Booking</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+        {navbar()}
         <Switch>
           <Route exact path="/apartment">
             <Apartments />
@@ -72,9 +116,10 @@ export default function App() {
             <CreateBooking />
           </Route>
           <Route path="/">
-            <Home />
+            <Apartments />
           </Route>
         </Switch>
+        {footer()}
       </div>
     </Router>
   );

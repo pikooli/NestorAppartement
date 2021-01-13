@@ -9,7 +9,7 @@ const api = {
   delete: async (url) => {
     if (url)
       return await fetch(url, { method: "DELETE" }).then(async (data) => {
-        if (data.status === 200) return await data.json();
+        if (data.status === 202) return true;
         else return null;
       });
   },
@@ -22,7 +22,7 @@ const api = {
         },
         body: JSON.stringify(body),
       }).then(async (data) => {
-        if (data.status === 200) return await data.json();
+        if (data.status === 201) return true;
         else return null;
       });
     else return null;

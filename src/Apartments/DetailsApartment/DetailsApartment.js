@@ -9,14 +9,19 @@ import {
 
 function useLogic() {
   let { id } = useParams();
-  console.log(id);
+
   useEffect(() => {}, []);
 
-  return {};
+  return { id };
 }
 
 export default function App({}) {
-  const {} = useLogic();
+  const { id } = useLogic();
 
-  return <h1>Details Apartemnt</h1>;
+  return (
+    <div>
+      <h1>Details Apartemnt</h1>
+      <p>{id}</p>
+    </div>
+  );
 }
