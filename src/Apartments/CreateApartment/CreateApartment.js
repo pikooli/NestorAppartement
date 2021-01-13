@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  createRoomBtn,
-  createApartmentForm,
-  displayRooms,
-  resetBtn,
-} from "./Display";
+import { createRoomBtn, createApartmentForm, resetBtn } from "./Display";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { modalAlert } from "../../Utlis/Alert";
@@ -17,6 +12,7 @@ function useLogic() {
   function submitForm(e) {
     e.preventDefault();
     if (
+      createApValue.rooms &&
       createApValue.rooms.length > 0 &&
       createApValue.name &&
       createApValue.number
@@ -63,7 +59,7 @@ function useLogic() {
   function setNumber(number) {
     setCreateApValue((val) => {
       ReduxActions.setAp({ ...val, number: number });
-      return;
+      return { ...val, number: number };
     });
   }
 
@@ -94,7 +90,7 @@ export default function App({}) {
 
   return (
     <div className="container">
-      <h1 className="textCenter"> Create apartment</h1>
+      <h1 className="textCenter my-3"> Create apartment</h1>
       {createRoomBtn()}
       {createApartmentForm(
         createApValue,

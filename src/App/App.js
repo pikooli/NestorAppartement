@@ -6,7 +6,7 @@ import CreateApartment from "../Apartments/CreateApartment/CreateApartment";
 import DetailsApartment from "../Apartments/DetailsApartment/DetailsApartment";
 import CreateRoom from "../Apartments/CreateRoom/CreateRoom";
 //
-import Client from "../Client/Client";
+import Client from "../Client/Client/Client";
 import DetailsClient from "../Client/DetailsClient/DetailsClient";
 import CreateClient from "../Client/CreateClient/CreateClient";
 //

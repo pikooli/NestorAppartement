@@ -19,24 +19,6 @@ function useLogic() {
     });
   }, []);
 
-  function checkNotEndIndex(newIndex) {
-    if (
-      newIndex >= 0 &&
-      newIndex !== index &&
-      apartments &&
-      apartments.length / 10 > newIndex
-    )
-      return true;
-    return false;
-  }
-
-  function activeChangePagination(newIndex) {
-    if (checkNotEndIndex(newIndex)) {
-      setIndex(newIndex);
-      setDisplayApartements(pagination(newIndex, apartments));
-    }
-  }
-
   function renderApartmentsArray() {
     if (searchResult)
       return searchResult.map((apartment) => {
@@ -55,10 +37,11 @@ function useLogic() {
   }
 
   return {
+    apartments,
     renderApartmentsArray,
     index,
-    activeChangePagination,
-    checkNotEndIndex,
+    setIndex,
+    setDisplayApartements,
     setSearchValue,
     searchValue,
     searchResult,
@@ -68,10 +51,11 @@ function useLogic() {
 
 export default function App() {
   const {
+    apartments,
     renderApartmentsArray,
     index,
-    activeChangePagination,
-    checkNotEndIndex,
+    setIndex,
+    setDisplayApartements,
     setSearchValue,
     searchValue,
     searchResult,
@@ -79,17 +63,17 @@ export default function App() {
   } = useLogic();
   return (
     <div className="container">
-      <h1 className="textCenter">Apartments</h1>
+      <h1 className="textCenter my-3">Apartments</h1>
       {createApartmentBtn()}
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayApartements, apartments)
+        : null}
       <div className="card mb-2">
         <ul className="list-group list-group-flush">
           {renderApartmentsArray()}
         </ul>
       </div>
-      {!searchResult
-        ? changePagination(index, activeChangePagination, checkNotEndIndex)
-        : null}
     </div>
   );
 }

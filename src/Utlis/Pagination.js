@@ -1,3 +1,14 @@
+function checkNotEndIndex(index, newIndex, array) {
+  if (
+    newIndex >= 0 &&
+    newIndex !== index &&
+    array &&
+    array.length / 10 > newIndex
+  )
+    return true;
+  return false;
+}
+
 export function pagination(index, array) {
   console.log(index);
   let ret = [];
@@ -8,12 +19,24 @@ export function pagination(index, array) {
   return ret;
 }
 
-export function changePagination(index, changeIndex, checkNotEndIndex) {
+export function changePagination(
+  index,
+  setIndex,
+  setDisplayApartements,
+  array
+) {
+  function changeIndex(newIndex) {
+    if (checkNotEndIndex(index, newIndex, array)) {
+      setIndex(newIndex);
+      setDisplayApartements(pagination(newIndex, array));
+    }
+  }
+
   return (
     <div className="position-relative  d-flex justify-content-center">
       <nav aria-label="Page navigation example ">
         <ul className="pagination">
-          {checkNotEndIndex(index - 1) ? (
+          {checkNotEndIndex(index, index - 1, array) ? (
             <li className="page-item">
               <button
                 className="page-link"
@@ -33,7 +56,7 @@ export function changePagination(index, changeIndex, checkNotEndIndex) {
             </button>
           </li>
 
-          {checkNotEndIndex(index + 1) ? (
+          {checkNotEndIndex(index, index + 1, array) ? (
             <li className="page-item">
               <button
                 className="page-link"

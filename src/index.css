@@ -30,6 +30,15 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: black;
+}
+
+.black {
+  text-decoration: none;
+  color: black;
+}
+
 .example {
   text-align: center;
 }

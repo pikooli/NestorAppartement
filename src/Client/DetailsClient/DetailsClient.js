@@ -6,17 +6,28 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
+import url from "../../Utlis/Url";
+import api from "../../Utlis/ApiRequest";
+import { clientDisplay } from "./Display";
 
 function useLogic() {
   let { id } = useParams();
-  console.log(id);
-  useEffect(() => {}, []);
+  const [client, setClient] = useState({});
+  useEffect(() => {
+    api.get(url.client.id(id)).then((data) => setClient(data.client));
+  }, []);
 
-  return {};
+  console.log(client);
+  return { client };
 }
 
 export default function App({}) {
-  const {} = useLogic();
+  const { client } = useLogic();
 
-  return <h1>Details customer</h1>;
+  return (
+    <div className="container">
+      <h1 className="textCenter my-3">Details client</h1>
+      {clientDisplay(client)}
+    </div>
+  );
 }
