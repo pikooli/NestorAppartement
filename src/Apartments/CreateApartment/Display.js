@@ -64,7 +64,7 @@ export function createApartmentForm(
           ></input>
         </label>
       </div>
-      {displayRooms(createApValue.rooms, removeRoom)}
+      {createApValue ? displayRooms(createApValue.rooms, removeRoom) : null}
       <button type="submit" className="btn btn-primary" onClick={submitForm}>
         Submit
       </button>

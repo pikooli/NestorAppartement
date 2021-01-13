@@ -24,6 +24,21 @@ function getAp() {
   return store.getState().apartment;
 }
 
+function setDetailsAp(apartment) {
+  if (typeof apartment === "object") {
+    store.dispatch({ type: ActionType.setDetailsAp, payload: apartment });
+    return true;
+  } else return false;
+}
+
+function deleteDetailsAp() {
+  store.dispatch({ type: ActionType.deleteDetailsAp });
+  return true;
+}
+function getDetailsAp() {
+  return store.getState().detailsApartment;
+}
+
 function setClient(client) {
   if (typeof client === "object") {
     store.dispatch({ type: ActionType.setClient, payload: client });
@@ -78,6 +93,9 @@ export default {
   getAp,
   setAp,
   deleteAp,
+  setDetailsAp,
+  deleteDetailsAp,
+  getDetailsAp,
   getClient,
   setClient,
   deleteCLient,

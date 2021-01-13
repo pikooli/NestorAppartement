@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { apartmentDisplay, displayRooms } from "./Display";
+import ReduxActions from "../../Redux/Actions/ReduxActions";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 
@@ -9,11 +10,10 @@ function useLogic() {
   const [apartment, setApartment] = useState(null);
 
   useEffect(() => {
-    api.get(url.apartment.id(id)).then((data) => {
-      setApartment(data);
-    });
+    setApartment(ReduxActions.getDetailsAp());
   }, []);
 
+  console.log(apartment);
   return { id, apartment };
 }
 

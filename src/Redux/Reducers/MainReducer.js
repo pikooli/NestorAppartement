@@ -2,6 +2,7 @@ import ActionType from "./ActionType";
 
 const initialState = {
   apartment: {},
+  detailsApartment: {},
   room: {},
   client: {},
 };
@@ -21,6 +22,21 @@ export default function (state = initialState, action) {
         ...state,
         apartment: {},
       };
+
+    // details apartment
+    case ActionType.setDetailsAp:
+      return {
+        ...state,
+        detailsApartment: {
+          ...action.payload,
+        },
+      };
+    case ActionType.deleteDetailsAp:
+      return {
+        ...state,
+        detailsApartment: {},
+      };
+
     // client
     case ActionType.setClient:
       return {

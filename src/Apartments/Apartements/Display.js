@@ -1,3 +1,5 @@
+import ReduxActions from "../../Redux/Actions/ReduxActions";
+
 export function createApartmentBtn() {
   return (
     <div className="d-flex justify-content-end">
@@ -16,7 +18,15 @@ export function apartmentDisplay(apartment) {
   if (!apartment) return null;
   return (
     <li className="list-group-item " key={apartment.id}>
-      <a className="float-left container" href={`apartment/${apartment.id}`}>
+      <a
+        className="float-left container"
+        href={`apartment/${apartment.id}`}
+        onClick={(e) => {
+          e.preventDefault();
+          ReduxActions.setDetailsAp(apartment);
+          window.location.href = `apartment/${apartment.id}`;
+        }}
+      >
         <div className="row">
           <div className="col-sm-2">
             <img
