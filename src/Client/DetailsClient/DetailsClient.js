@@ -17,7 +17,6 @@ function useLogic() {
     api.get(url.client.id(id)).then((data) => setClient(data.client));
   }, []);
 
-  console.log(client);
   return { client };
 }
 

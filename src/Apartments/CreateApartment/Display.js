@@ -25,7 +25,6 @@ export function createApartmentForm(
   submitForm,
   removeRoom
 ) {
-  console.log(createApValue);
   return (
     <form className="row">
       <div className="col-sm-2 mb-3">

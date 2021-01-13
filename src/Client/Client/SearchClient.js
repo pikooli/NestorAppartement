@@ -10,7 +10,6 @@ export function searchClient(clients, searchValue) {
     return null;
 
   if (searchValue.firstName) {
-    console.log(searchValue.firstName);
     clients.forEach((client) => {
       if (client.firstName === searchValue.firstName) retArray.push(client);
     });

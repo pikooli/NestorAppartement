@@ -39,6 +39,10 @@ a:hover {
   color: black;
 }
 
+.pictureSize {
+  width: 150px;
+}
+
 .example {
   text-align: center;
 }

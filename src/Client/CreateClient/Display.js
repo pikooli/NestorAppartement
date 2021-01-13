@@ -30,7 +30,6 @@ export function createClientForm(
   setCreateClientValue,
   submitForm
 ) {
-  console.log(createClientValue);
   return (
     <form className="row">
       <div className="col-sm-2 mb-3">

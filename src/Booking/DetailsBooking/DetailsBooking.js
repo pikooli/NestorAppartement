@@ -6,17 +6,29 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
+import url from "../../Utlis/Url";
+import api from "../../Utlis/ApiRequest";
+import { bookingDisplay } from "./Display";
 
 function useLogic() {
   let { id } = useParams();
-  console.log(id);
-  useEffect(() => {}, []);
 
-  return {};
+  const [booking, setBooking] = useState(null);
+
+  useEffect(() => {
+    api.get(url.booking.id(id)).then((data) => setBooking(data.booking));
+  }, []);
+
+  return { booking };
 }
 
 export default function App({}) {
-  const {} = useLogic();
+  const { booking } = useLogic();
 
-  return <h1>Details reservations</h1>;
+  return (
+    <div className="container">
+      <h1 className="text-center my-3">Details booking</h1>
+      {bookingDisplay(booking)}
+    </div>
+  );
 }

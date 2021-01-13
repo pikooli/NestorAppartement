@@ -10,7 +10,6 @@ function checkNotEndIndex(index, newIndex, array) {
 }
 
 export function pagination(index, array) {
-  console.log(index);
   let ret = [];
   let currentIndex = index * 10;
   for (let i = 0; i < 10; i++) {
@@ -46,7 +45,6 @@ export function changePagination(
               </button>
             </li>
           ) : null}
-
           <li className="page-item">
             <button
               className="page-link"
@@ -55,7 +53,6 @@ export function changePagination(
               {index + 1}
             </button>
           </li>
-
           {checkNotEndIndex(index, index + 1, array) ? (
             <li className="page-item">
               <button

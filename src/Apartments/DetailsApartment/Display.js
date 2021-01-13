@@ -1,5 +1,5 @@
 export function apartmentDisplay(apartment) {
-  console.log(apartment);
+  apartment;
   if (!apartment) return null;
   return (
     <li className="list-group-item " key={apartment.id}>

@@ -10,7 +10,7 @@ import Client from "../Client/Client/Client";
 import DetailsClient from "../Client/DetailsClient/DetailsClient";
 import CreateClient from "../Client/CreateClient/CreateClient";
 //
-import Booking from "../Booking/Booking";
+import Booking from "../Booking/Booking/Booking";
 import DetailsBooking from "../Booking/DetailsBooking/DetailsBooking";
 import CreateBooking from "../Booking/CreateBooking/CreateBooking";
 
