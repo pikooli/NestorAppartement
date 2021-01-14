@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { apartmentDisplay, displayRooms, createRoomBtn } from "./Display";
 import ReduxActions from "../../Redux/Actions/ReduxActions";
-import url from "../../Utlis/Url";
-import api from "../../Utlis/ApiRequest";
 
 function useLogic() {
   const { id } = useParams();

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { pagination, changePagination } from "../../Utlis/Pagination";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
-import { clientsDisplay, createClientBtn } from "./Display";
-import { searchEntry, searchClient } from "./SearchClient";
+import { clientsDisplay, createClientBtn, searchEntry } from "./Display";
+import { searchClient } from "./SearchClient";
 
 function useLogic() {
   const [clients, setClients] = useState(null);

@@ -53,3 +53,52 @@ export function apartmentDisplay(apartment) {
     </li>
   );
 }
+
+function input(searchValue, setSearchValue, field) {
+  return (
+    <div className="col-sm">
+      <label className="form-label">
+        Apartment {field}
+        <input
+          type="text"
+          className="form-control"
+          placeholder={field}
+          name={field}
+          value={searchValue[field] ? searchValue[field] : ""}
+          onChange={(e) =>
+            setSearchValue((state) => {
+              return { ...state, [field]: e.target.value };
+            })
+          }
+        ></input>
+      </label>
+    </div>
+  );
+}
+
+export function searchEntry(searchValue, setSearchValue, triggerSearch) {
+  return (
+    <form>
+      <div className="row">
+        {input(searchValue, setSearchValue, "number")}
+        {input(searchValue, setSearchValue, "name")}
+        {input(searchValue, setSearchValue, "street")}
+        {input(searchValue, setSearchValue, "zipCode")}
+
+        {input(searchValue, setSearchValue, "nbRooms")}
+
+        <div className="d-flex justify-content-center my-3">
+          <input
+            type="submit"
+            className="btn btn-primary "
+            value="Search"
+            onClick={(e) => {
+              e.preventDefault();
+              triggerSearch();
+            }}
+          ></input>
+        </div>
+      </div>
+    </form>
+  );
+}

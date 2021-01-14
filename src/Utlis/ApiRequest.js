@@ -7,8 +7,11 @@ const api = {
       });
   },
   delete: async (url) => {
+    console.log(url);
     if (url)
-      return await fetch(url, { method: "DELETE" }).then(async (data) => {
+      return await fetch("https://cors-anywhere.herokuapp.com/" + url, {
+        method: "DELETE",
+      }).then(async (data) => {
         if (data.status === 202) return true;
         else return null;
       });

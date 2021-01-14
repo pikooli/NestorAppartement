@@ -13,6 +13,8 @@ import CreateClient from "../Client/CreateClient/CreateClient";
 import Booking from "../Booking/Booking/Booking";
 import DetailsBooking from "../Booking/DetailsBooking/DetailsBooking";
 import CreateBooking from "../Booking/CreateBooking/CreateBooking";
+//
+import Rooms from "../Rooms/Rooms";
 
 export default function App() {
   function navbar() {
@@ -51,6 +53,13 @@ export default function App() {
                 <i className="fas fa-user-alt fa-2x"></i>
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" to="/room">
+                <i className="fas fa-bed fa-2x"></i>
+              </Link>
+            </li>
+
             <li className="nav-item">
               <Link className="nav-link active" to="/booking">
                 <i className="fas fa-calendar-check fa-2x"></i>
@@ -108,6 +117,9 @@ export default function App() {
           </Route>
           <Route exact path="/createClient">
             <CreateClient />
+          </Route>
+          <Route exact path="/room">
+            <Rooms />
           </Route>
           <Route exact path="/booking">
             <Booking />

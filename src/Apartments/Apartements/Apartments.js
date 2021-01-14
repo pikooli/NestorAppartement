@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { pagination, changePagination } from "../../Utlis/Pagination";
-import { searchApartment, searchEntry } from "./SearchApartments";
-import { createApartmentBtn, apartmentDisplay } from "./Display";
+import { searchApartment } from "./SearchApartments";
+import { createApartmentBtn, apartmentDisplay, searchEntry } from "./Display";
 
 function useLogic() {
   const [apartments, setApartments] = useState(null);

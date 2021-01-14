@@ -1,3 +1,7 @@
+import url from "../../Utlis/Url";
+import api from "../../Utlis/ApiRequest";
+import { modalAlertError } from "../../Utlis/Alert";
+
 export function createRoomBtn(id) {
   return (
     <div className="d-flex justify-content-end">
@@ -45,7 +49,7 @@ function displayRoom(room, index) {
   if (!room) return null;
   return (
     <li key={index} className="list-group-item">
-      number {room.number} area {room.area} price {room.price}
+      number {room.number} area {room.area} price {room.price}{" "}
     </li>
   );
 }

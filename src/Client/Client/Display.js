@@ -38,3 +38,51 @@ export function clientsDisplay(client) {
     </li>
   );
 }
+
+function input(searchValue, setSearchValue, field) {
+  return (
+    <div className="col-sm">
+      <label className="form-label">
+        Client {field}
+        <input
+          type="text"
+          className="form-control"
+          placeholder={field}
+          name={field}
+          value={searchValue[field] ? searchValue[field] : ""}
+          onChange={(e) =>
+            setSearchValue((state) => {
+              return { ...state, [field]: e.target.value };
+            })
+          }
+        ></input>
+      </label>
+    </div>
+  );
+}
+
+export function searchEntry(searchValue, setSearchValue, triggerSearch) {
+  return (
+    <form>
+      <div className="row textCenter">
+        {input(searchValue, setSearchValue, "firstName")}
+        {input(searchValue, setSearchValue, "lastName")}
+        {input(searchValue, setSearchValue, "phone")}
+
+        {input(searchValue, setSearchValue, "birthDate")}
+        {input(searchValue, setSearchValue, "nationality")}
+        <div className="d-flex justify-content-center my-3">
+          <input
+            type="submit"
+            className="btn btn-primary "
+            value="Search"
+            onClick={(e) => {
+              e.preventDefault();
+              triggerSearch();
+            }}
+          ></input>
+        </div>
+      </div>
+    </form>
+  );
+}
