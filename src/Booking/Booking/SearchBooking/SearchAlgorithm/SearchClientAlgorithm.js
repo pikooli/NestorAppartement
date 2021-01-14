@@ -1,22 +1,22 @@
-import { checkIfEntryInArray } from "./SearchFunctions";
+import { checkIfEntryInArrayWithMainField } from "../../../../Utlis/SearchFunction/SearchwithMainField";
 
 export function searchClient(bookings, newArray, searchValue) {
   if (searchValue.client) {
-    newArray = checkIfEntryInArray(
+    newArray = checkIfEntryInArrayWithMainField(
       bookings,
       newArray,
       searchValue,
       "client",
       "firstName"
     );
-    newArray = checkIfEntryInArray(
+    newArray = checkIfEntryInArrayWithMainField(
       bookings,
       newArray,
       searchValue,
       "client",
       "lastName"
     );
-    newArray = checkIfEntryInArray(
+    newArray = checkIfEntryInArrayWithMainField(
       bookings,
       newArray,
       searchValue,

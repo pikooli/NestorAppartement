@@ -106,3 +106,15 @@ export function renderBookingsDisplay(bookings) {
     </div>
   );
 }
+
+// btn create booking
+
+export function createBookingBtn() {
+  return (
+    <div className="d-flex justify-content-end">
+      <a type="button" className="btn btn-primary my-3 " href="/createBooking">
+        Create Booking
+      </a>
+    </div>
+  );
+}

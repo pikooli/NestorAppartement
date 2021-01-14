@@ -1,9 +1,14 @@
+import { compareString } from "../../../../Utlis/Compare";
+
 function alreadyEntryInArray(bookings, newArray, searchValue, field) {
   if (searchValue.apartment[field]) {
     newArray = newArray.map((element) => {
       if (
         element &&
-        element.room.apartment[field] === searchValue.apartment[field]
+        compareString(
+          element.room.apartment[field],
+          searchValue.apartment[field]
+        )
       )
         return element;
       return null;
@@ -17,7 +22,10 @@ function NotEntryInArray(bookings, newArray, searchValue, field) {
     newArray = bookings.map((element) => {
       if (
         element &&
-        element.room.apartment[field] === searchValue.apartment[field]
+        compareString(
+          element.room.apartment[field],
+          searchValue.apartment[field]
+        )
       )
         return element;
       return null;

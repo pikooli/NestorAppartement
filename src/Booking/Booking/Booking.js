@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
-import { renderBookingsDisplay } from "./Display";
+import { renderBookingsDisplay, createBookingBtn } from "./Display";
 import { pagination, changePagination } from "../../Utlis/Pagination";
 
 import { searchInput } from "./SearchBooking/SearchBookingForm";
@@ -54,6 +54,7 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="text-center my-3">Bookings</h1>
+      {createBookingBtn()}
       {searchInput(searchValue, setSearchValue, triggerSearch)}
       {changePagination(index, setIndex, setDisplayBookings, bookings)}
       {searchResult
