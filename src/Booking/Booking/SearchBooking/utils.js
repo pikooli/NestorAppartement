@@ -17,7 +17,10 @@ export function input(searchValue, setSearchValue, fieldInput, object) {
             setSearchValue((state) => {
               return {
                 ...state,
-                [object]: { ...state[object], [fieldInput]: e.target.value },
+                [object]: {
+                  ...state[object],
+                  [fieldInput]: e.target.value ? e.target.value : null,
+                },
               };
             })
           }
@@ -25,4 +28,11 @@ export function input(searchValue, setSearchValue, fieldInput, object) {
       </label>
     </div>
   );
+}
+
+export function objIsEmplty(obj) {
+  for (let key in obj) {
+    if (obj[key]) return false;
+  }
+  return true;
 }

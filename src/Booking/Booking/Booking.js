@@ -5,7 +5,8 @@ import api from "../../Utlis/ApiRequest";
 import { renderBookingsDisplay } from "./Display";
 import { pagination, changePagination } from "../../Utlis/Pagination";
 
-import { searchInput } from "./SearchBooking/SearchBooking";
+import { searchInput } from "./SearchBooking/SearchBookingForm";
+import { searchAlgorithm } from "./SearchBooking/SearchAlgorithm/SearchAlgorithm";
 
 function useLogic() {
   const [bookings, setBookings] = useState(null);
@@ -21,6 +22,10 @@ function useLogic() {
     });
   }, []);
 
+  function triggerSearch() {
+    setSearchResult(searchAlgorithm(bookings, searchValue));
+  }
+
   return {
     bookings,
     index,
@@ -29,7 +34,8 @@ function useLogic() {
     setDisplayBookings,
     searchValue,
     setSearchValue,
-    setSearchResult,
+    searchResult,
+    triggerSearch,
   };
 }
 
@@ -42,15 +48,17 @@ export default function App({}) {
     setDisplayBookings,
     searchValue,
     setSearchValue,
-    setSearchResult,
+    searchResult,
+    triggerSearch,
   } = useLogic();
-
   return (
     <div className="container">
       <h1 className="text-center my-3">Bookings</h1>
-      {searchInput(searchValue, setSearchValue, setSearchResult)}
+      {searchInput(searchValue, setSearchValue, triggerSearch)}
       {changePagination(index, setIndex, setDisplayBookings, bookings)}
-      {renderBookingsDisplay(displayBookings)}
+      {searchResult
+        ? renderBookingsDisplay(searchResult)
+        : renderBookingsDisplay(displayBookings)}
     </div>
   );
 }
