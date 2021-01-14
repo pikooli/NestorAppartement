@@ -54,7 +54,7 @@ export default function App({ roomSave, saveRoom }) {
 
   return (
     <div className="container">
-      <h1 className="text-center">ROOM</h1>
+      <h1 className="text-center my-3">Room</h1>
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       {!searchResult
         ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)

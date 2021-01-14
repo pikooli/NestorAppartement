@@ -5,6 +5,8 @@ import Client from "./Client/Client";
 import Room from "./Room/Rooms";
 import reduxActions from "../../Redux/Actions/ReduxActions";
 import { createBookingBtn } from "./Display";
+import { modalAlert } from "../../Utlis/Alert";
+import { createResetBtn } from "../../Utlis/ResetBtn";
 
 function useLogic() {
   useEffect(() => {}, []);
@@ -21,16 +23,26 @@ function useLogic() {
     reduxActions.setRoom(room);
   }
 
-  function triggerSave() {
+  function reset() {
+    saveClient({});
+    saveRoom({});
+  }
+
+  function triggerBooking() {
     if (clientSave && clientSave.id && roomSave && roomSave.id)
       api
         .post(url.booking.base, {
           clientId: clientSave.id,
           roomId: roomSave.id,
         })
-        .then((data) => console.log(data));
+        .then((data) => {
+          if (data) {
+            modalAlert("Your booking have been accepted");
+            reset();
+          }
+        });
   }
-  return { clientSave, saveClient, roomSave, saveRoom, triggerSave };
+  return { clientSave, saveClient, roomSave, saveRoom, triggerBooking, reset };
 }
 
 export default function App({}) {
@@ -39,13 +51,15 @@ export default function App({}) {
     saveClient,
     roomSave,
     saveRoom,
-    triggerSave,
+    triggerBooking,
+    reset,
   } = useLogic();
 
   return (
     <div className="container">
       <h1 className="text-center">Create booking</h1>
-      {createBookingBtn(triggerSave)}
+      {createBookingBtn(triggerBooking)}
+      {createResetBtn(reset)}
       <div className="row">
         <div className="col-sm-6">
           <Room roomSave={roomSave} saveRoom={saveRoom} />

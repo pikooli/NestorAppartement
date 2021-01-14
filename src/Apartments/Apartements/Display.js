@@ -1,4 +1,5 @@
 import ReduxActions from "../../Redux/Actions/ReduxActions";
+import { input } from "../../Utlis/Inputs";
 
 export function createApartmentBtn() {
   return (
@@ -51,28 +52,6 @@ export function apartmentDisplay(apartment) {
         </div>
       </a>
     </li>
-  );
-}
-
-function input(searchValue, setSearchValue, field) {
-  return (
-    <div className="col-sm">
-      <label className="form-label">
-        Apartment {field}
-        <input
-          type="text"
-          className="form-control"
-          placeholder={field}
-          name={field}
-          value={searchValue[field] ? searchValue[field] : ""}
-          onChange={(e) =>
-            setSearchValue((state) => {
-              return { ...state, [field]: e.target.value };
-            })
-          }
-        ></input>
-      </label>
-    </div>
   );
 }
 

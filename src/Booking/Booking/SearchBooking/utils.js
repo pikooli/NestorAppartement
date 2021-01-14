@@ -1,8 +1,10 @@
+import _ from "lodash";
+
 export function input(searchValue, setSearchValue, fieldInput, object) {
   return (
     <div className="col-sm-2">
       <label className="form-label">
-        {object} {fieldInput}
+        {_.capitalize(object)} {fieldInput}
         <input
           type={fieldInput === "price" ? "number" : "text"}
           className="form-control"

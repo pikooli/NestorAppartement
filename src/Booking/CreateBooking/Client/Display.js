@@ -1,3 +1,5 @@
+import { input } from "../../../Utlis/Inputs";
+
 export function clientsDisplay(client, clientSave, saveClient) {
   function selected(e) {
     e.preventDefault();
@@ -59,32 +61,10 @@ export function renderClientsArray(clientsArray, clientSave, saveClient) {
 
 //  seach input form
 
-function input(searchValue, setSearchValue, field) {
-  return (
-    <div className="col-sm">
-      <label className="form-label">
-        Client {field}
-        <input
-          type="text"
-          className="form-control"
-          placeholder={field}
-          name={field}
-          value={searchValue[field] ? searchValue[field] : ""}
-          onChange={(e) =>
-            setSearchValue((state) => {
-              return { ...state, [field]: e.target.value };
-            })
-          }
-        ></input>
-      </label>
-    </div>
-  );
-}
-
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (
     <form>
-      <div className="row textCenter">
+      <div className="row ">
         {input(searchValue, setSearchValue, "firstName")}
         {input(searchValue, setSearchValue, "lastName")}
         {input(searchValue, setSearchValue, "phone")}

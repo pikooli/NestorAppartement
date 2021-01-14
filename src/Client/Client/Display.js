@@ -1,3 +1,5 @@
+import { input } from "../../Utlis/Inputs";
+
 export function createClientBtn() {
   return (
     <div className="d-flex justify-content-end">
@@ -51,28 +53,6 @@ export function renderClientsArray(clientsArray) {
       </div>
     );
   } else return null;
-}
-
-function input(searchValue, setSearchValue, field) {
-  return (
-    <div className="col-sm">
-      <label className="form-label">
-        Client {field}
-        <input
-          type="text"
-          className="form-control"
-          placeholder={field}
-          name={field}
-          value={searchValue[field] ? searchValue[field] : ""}
-          onChange={(e) =>
-            setSearchValue((state) => {
-              return { ...state, [field]: e.target.value };
-            })
-          }
-        ></input>
-      </label>
-    </div>
-  );
 }
 
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {

@@ -1,8 +1,7 @@
-export function createBookingBtn(triggerBooking) {
+export function createResetBtn(triggerBooking) {
   return (
     <button className="btn btn-primary" onClick={triggerBooking}>
-      {" "}
-      save{" "}
+      <i class="fas fa-redo-alt fa-1x"></i>
     </button>
   );
 }

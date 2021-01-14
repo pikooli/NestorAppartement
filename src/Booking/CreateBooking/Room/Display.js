@@ -1,3 +1,4 @@
+import { input } from "../../../Utlis/Inputs";
 function displayRoom(room, roomSave, saveRoom) {
   function selected(e) {
     e.preventDefault();
@@ -30,28 +31,6 @@ export function displayRooms(rooms, roomSave, saveRoom) {
 }
 
 //  search field
-
-function input(searchValue, setSearchValue, field) {
-  return (
-    <div className="col-sm">
-      <label className="form-label">
-        Room {field}
-        <input
-          type="text"
-          className="form-control"
-          placeholder={field}
-          name={field}
-          value={searchValue[field] ? searchValue[field] : ""}
-          onChange={(e) =>
-            setSearchValue((state) => {
-              return { ...state, [field]: e.target.value };
-            })
-          }
-        ></input>
-      </label>
-    </div>
-  );
-}
 
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (
