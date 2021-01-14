@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoomBtn, createApartmentForm, resetBtn } from "./Display";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
-import { modalAlert } from "../../Utlis/Alert";
+import { modalAlert, modalAlertError } from "../../Utlis/Alert";
 import ReduxActions from "../../Redux/Actions/ReduxActions";
 
 function useLogic() {
@@ -22,16 +22,13 @@ function useLogic() {
           resetFunction();
           modalAlert("Your apartment have been created");
           window.location.href = "/";
-        } else
-          modalAlert(
-            "Something went wrong try again or ask your administrator system"
-          );
+        } else modalAlertError();
       });
-    else if (!createApValue.number) modalAlert("You didn't give a number");
-    else if (!createApValue.name) modalAlert("You didn't give a name");
+    else if (!createApValue.number) modalAlertError("You didn't give a number");
+    else if (!createApValue.name) modalAlertError("You didn't give a name");
     else if (createApValue.rooms.length <= 0)
-      modalAlert("It should have at least one room");
-    else modalAlert("Don't know what went wrong");
+      modalAlertError("It should have at least one room");
+    else modalAlertError("Don't know what went wrong");
   }
 
   function removeRoom(e, index) {

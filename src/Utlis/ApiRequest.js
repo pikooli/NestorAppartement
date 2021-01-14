@@ -22,6 +22,7 @@ const api = {
         },
         body: JSON.stringify(body),
       }).then(async (data) => {
+        console.log(data);
         if (data.status === 201) return true;
         else return null;
       });

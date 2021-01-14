@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
-import { apartmentDisplay, displayRooms } from "./Display";
+import { apartmentDisplay, displayRooms, createRoomBtn } from "./Display";
 import ReduxActions from "../../Redux/Actions/ReduxActions";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
@@ -23,6 +23,7 @@ export default function App({}) {
     <div className="container">
       <h1>Details Apartemnt</h1>
       <p>{id}</p>
+      {createRoomBtn(id)}
       {apartmentDisplay(apartment)}
       <h3 className="my-3">List of Rooms</h3>
       {displayRooms(apartment)}

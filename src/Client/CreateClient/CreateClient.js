@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createClientForm } from "./Display";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
-import { modalAlert } from "../../Utlis/Alert";
+import { modalAlert, modalAlertError } from "../../Utlis/Alert";
 import { isValidEmail } from "../../Utlis/IsValidEmail";
 
 function useLogic() {
@@ -12,18 +12,19 @@ function useLogic() {
 
   function errorMessage() {
     if (!createClientValue || !createClientValue.firstName)
-      modalAlert("You didn't put a fistName");
+      modalAlertError("You didn't put a fistName");
     else if (!createClientValue.lastName)
-      modalAlert("You didn't put a lastName");
-    else if (!createClientValue.email) modalAlert("You didn't put a email");
+      modalAlertError("You didn't put a lastName");
+    else if (!createClientValue.email)
+      modalAlertError("You didn't put a email");
     else if (!isValidEmail(createClientValue.email))
-      modalAlert("That not a valid email");
+      modalAlertError("That not a valid email");
     else if (!createClientValue.phone)
-      modalAlert("You didn't put a phone number");
+      modalAlertError("You didn't put a phone number");
     else if (!createClientValue.nationality)
-      modalAlert("You didn't put a nationality");
+      modalAlertError("You didn't put a nationality");
     else if (!createClientValue.birthDate)
-      modalAlert("You didn't put a birthDate");
+      modalAlertError("You didn't put a birthDate");
   }
 
   function submitForm(e) {
@@ -42,7 +43,7 @@ function useLogic() {
         if (data) {
           modalAlert("Client created");
           window.location.href = "/client";
-        } else modalAlert("Something went wrong try again please");
+        } else modalAlertError();
       });
     else errorMessage();
   }

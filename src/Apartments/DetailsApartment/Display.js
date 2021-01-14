@@ -1,5 +1,14 @@
+export function createRoomBtn(id) {
+  return (
+    <div className="d-flex justify-content-end">
+      <a className="btn btn-primary my-3 " href={`/createRoom/${id ? id : ""}`}>
+        Create room
+      </a>
+    </div>
+  );
+}
+
 export function apartmentDisplay(apartment) {
-  apartment;
   if (!apartment) return null;
   return (
     <li className="list-group-item " key={apartment.id}>
