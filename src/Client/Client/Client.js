@@ -36,8 +36,8 @@ function useLogic() {
 
   function triggerSearch() {
     setSearchResult(searchClient(clients, searchValue));
-    setSearchValue({});
   }
+
   return {
     clients,
     renderClientsArray,

@@ -33,7 +33,6 @@ function useLogic() {
 
   function triggerSearch() {
     setSearchResult(searchApartment(apartments, searchValue));
-    setSearchValue({});
   }
 
   return {

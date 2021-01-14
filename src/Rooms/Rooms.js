@@ -3,6 +3,7 @@ import url from "../Utlis/Url";
 import api from "../Utlis/ApiRequest";
 import { pagination, changePagination } from "../Utlis/Pagination";
 import { displayRooms, searchEntry } from "./Display";
+import { searchRoom } from "./SearchAlgorithm";
 
 function useLogic() {
   const [rooms, setRooms] = useState(null);
@@ -18,30 +19,49 @@ function useLogic() {
     });
   }, []);
 
-  function triggerSearch() {}
+  function triggerSearch() {
+    setSearchResult(searchRoom(rooms, searchValue));
+  }
+
   return {
+    rooms,
     displayRoomsArray,
     searchValue,
     setSearchValue,
     triggerSearch,
     setDisplayRoomsArray,
+    searchResult,
+    setSearchResult,
+    index,
+    setIndex,
   };
 }
 
 export default function App({}) {
   const {
+    rooms,
     displayRoomsArray,
     searchValue,
     setSearchValue,
     triggerSearch,
     setDisplayRoomsArray,
+    searchResult,
+    setSearchResult,
+    index,
+    setIndex,
   } = useLogic();
 
   return (
     <div className="container">
       <h1 className="text-center">ROOM</h1>
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
-      {displayRooms(displayRoomsArray, setDisplayRoomsArray)}
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)
+        : null}
+      {displayRooms(
+        searchResult ? searchResult : displayRoomsArray,
+        searchResult ? setSearchResult : setDisplayRoomsArray
+      )}
     </div>
   );
 }

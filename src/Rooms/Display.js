@@ -4,7 +4,9 @@ import { modalAlert, modalAlertError } from "../Utlis/Alert";
 
 function deleteRoomBtn(room, index, setArray) {
   function deleteRoom() {
+    console.log(room.id);
     api.delete(url.room.id(room.id)).then((data) => {
+      console.log(data);
       if (!data) return modalAlertError();
       setArray((rooms) => {
         let newRooms = rooms.map((room, key) => {
@@ -35,13 +37,15 @@ function displayRoom(room, index, setArray) {
 export function displayRooms(rooms, setArray) {
   if (!rooms) return null;
   return (
-    <div className="card">
+    <div className="card mb-3">
       <ul className="list-group list-group-flush">
         {rooms.map((room, index) => displayRoom(room, index, setArray))}
       </ul>
     </div>
   );
 }
+
+//  search field
 
 function input(searchValue, setSearchValue, field) {
   return (

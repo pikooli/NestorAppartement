@@ -1,3 +1,5 @@
+const corsApi = "https://stark-fjord-10743.herokuapp.com/";
+
 const api = {
   get: async (url) => {
     if (url)
@@ -7,9 +9,8 @@ const api = {
       });
   },
   delete: async (url) => {
-    console.log(url);
     if (url)
-      return await fetch("https://cors-anywhere.herokuapp.com/" + url, {
+      return await fetch(corsApi + url, {
         method: "DELETE",
       }).then(async (data) => {
         if (data.status === 202) return true;
@@ -25,7 +26,6 @@ const api = {
         },
         body: JSON.stringify(body),
       }).then(async (data) => {
-        console.log(data);
         if (data.status === 201) return true;
         else return null;
       });
