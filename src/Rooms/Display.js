@@ -1,11 +1,9 @@
 import url from "../Utlis/Url";
 import api from "../Utlis/ApiRequest";
-import { modalAlert, modalAlertError } from "../Utlis/Alert";
 import { input } from "../Utlis/Inputs";
 
 function deleteRoomBtn(room, index, setArray) {
   function deleteRoom() {
-    console.log(room.id);
     api.delete(url.room.id(room.id)).then((data) => {
       if (!data) return;
       setArray((rooms) => {

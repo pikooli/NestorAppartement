@@ -39,6 +39,10 @@ a:hover {
   color: black;
 }
 
+.white {
+  color: white;
+  background-color: white;
+}
 .pictureSize {
   width: 150px;
 }

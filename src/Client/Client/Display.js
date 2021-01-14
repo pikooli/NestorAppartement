@@ -3,7 +3,7 @@ import { input } from "../../Utlis/Inputs";
 export function createClientBtn() {
   return (
     <div className="d-flex justify-content-end">
-      <a type="button" className="btn btn-primary my-3 " href="/createClient">
+      <a type="button" className="btn btn-primary mb-3 " href="/createClient">
         Create Client
       </a>
     </div>
@@ -58,7 +58,7 @@ export function renderClientsArray(clientsArray) {
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (
     <form>
-      <div className="row textCenter">
+      <div className="row ">
         {input(searchValue, setSearchValue, "firstName")}
         {input(searchValue, setSearchValue, "lastName")}
         {input(searchValue, setSearchValue, "phone")}
