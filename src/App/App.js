@@ -19,50 +19,52 @@ import Rooms from "../Rooms/Rooms";
 export default function App() {
   function navbar() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark pe-2">
-        <a href="/">
+      <nav className="navbar navbar-expand-lg navbar-dark">
+        <a href="/" className="navbar-brand ">
           <img
+            className="mw-100"
             src="https://www.chez-nestor.com/_nuxt/img/186473d.png"
             alt="logo of the website"
           />
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarToggleExternalContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="fullsize d-flex justify-content-end me-2 ">
+          <button
+            className="navbar-toggler "
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon "></span>
+          </button>
+        </div>
         <div
-          className="collapse navbar-collapse justify-content-end"
+          className="collapse navbar-collapse justify-content-end "
           id="navbarNav"
         >
-          <ul className="nav">
+          <ul className="navbar-nav mr-auto ms-2">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                <i className="fas fa-home fa-2x"></i>{" "}
+              <Link className="nav-link " to="/">
+                <i className="fas fa-home fa-2x d-flex justify-content-end me-2"></i>{" "}
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link active" to="/client">
-                <i className="fas fa-user-alt fa-2x"></i>
+              <Link className="nav-link " to="/client">
+                <i className="fas fa-user-alt fa-2x d-flex  justify-content-end me-2"></i>
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link active" to="/room">
-                <i className="fas fa-bed fa-2x"></i>
+              <Link className="nav-link " to="/room">
+                <i className="fas fa-bed fa-2x d-flex  justify-content-end me-2"></i>
               </Link>
             </li>
-
             <li className="nav-item">
-              <Link className="nav-link active" to="/booking">
-                <i className="fas fa-calendar-check fa-2x"></i>
+              <Link className="nav-link " to="/booking">
+                <i className="fas fa-calendar-check fa-2x d-flex  justify-content-end me-2"></i>
               </Link>
             </li>
           </ul>

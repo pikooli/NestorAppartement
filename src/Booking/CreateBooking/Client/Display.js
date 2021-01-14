@@ -6,7 +6,7 @@ import { joinTextNormal } from "../../../Utlis/TextStyle/Normal";
 export function clientsDisplay(client, clientSave, saveClient) {
   function selected(e) {
     e.preventDefault();
-    saveClient(client);
+    if (saveClient) saveClient(client);
   }
 
   if (!client) return null;
@@ -15,12 +15,14 @@ export function clientsDisplay(client, clientSave, saveClient) {
     <li
       key={client.id}
       className={`list-group-item ${
-        clientSave && client.id === clientSave.id ? "border border-danger" : ""
+        clientSave && client.id === clientSave.id
+          ? "border border-2 border-success"
+          : ""
       }`}
       onClick={(e) => selected(e)}
     >
       <div className="row">
-        <div className="col-sm-2">{showPicture(image.client, "client")}</div>
+        <div className="col-sm-2 ">{showPicture(image.client, "client")}</div>
         <div className="col-sm">
           {joinTextNormal("FirstName", client.firstName)}
           {joinTextNormal("LastName", client.lastName)}
@@ -32,11 +34,27 @@ export function clientsDisplay(client, clientSave, saveClient) {
           )}
         </div>
       </div>
-      <a
-        href={`client/${client.id}`}
-        className="float-left container black"
-      ></a>
     </li>
+  );
+}
+
+export function clientsThumbnail(client) {
+  if (!client) return null;
+
+  return (
+    <div className="row ">
+      <div className="col-sm-3">{showPicture(image.client, "client")}</div>
+      <div className="col-sm">
+        {joinTextNormal("FirstName", client.firstName)}
+        {joinTextNormal("LastName", client.lastName)}
+        {joinTextNormal("Phone", client.phone)}
+        {joinTextNormal("Nationality", client.nationality)}
+        {joinTextNormal(
+          "NbBooking",
+          client.bookings ? client.bookings.length : 0
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -60,12 +78,12 @@ export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (
     <form>
       <div className="row ">
-        {input(searchValue, setSearchValue, "firstName")}
-        {input(searchValue, setSearchValue, "lastName")}
-        {input(searchValue, setSearchValue, "phone")}
+        {input(searchValue, setSearchValue, "firstName", true)}
+        {input(searchValue, setSearchValue, "lastName", true)}
+        {input(searchValue, setSearchValue, "phone", true)}
 
-        {input(searchValue, setSearchValue, "birthDate")}
-        {input(searchValue, setSearchValue, "nationality")}
+        {input(searchValue, setSearchValue, "birthDate", true)}
+        {input(searchValue, setSearchValue, "nationality", true)}
         <div className="d-flex justify-content-center my-3">
           <input
             type="submit"

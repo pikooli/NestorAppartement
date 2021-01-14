@@ -7,6 +7,8 @@ import reduxActions from "../../Redux/Actions/ReduxActions";
 import { createBookingBtn } from "./Display";
 import { modalAlert } from "../../Utlis/Alert";
 import { createResetBtn } from "../../Utlis/ResetBtn";
+import { clientsThumbnail } from "./Client/Display";
+import { roomThumbnail } from "./Room/Display";
 
 function useLogic() {
   useEffect(() => {}, []);
@@ -58,9 +60,17 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="text-center my-3">Create booking</h1>
-      <div className="d-flex justify-content-end">
-        <span className="mx-5">{createBookingBtn(triggerBooking)}</span>
-        <span>{createResetBtn(reset)}</span>
+      <div className="row d-flex justify-content-end minHeigth-150">
+        <div className="col-sm-5">
+          {roomSave.id ? roomThumbnail(roomSave, null, null) : null}
+        </div>
+        <div className="col-sm-5">
+          {clientSave.id ? clientsThumbnail(clientSave, null, null) : null}
+        </div>
+        <div className="col-sm-2 d-flex justify-content-end">
+          <span className="mx-5">{createBookingBtn(triggerBooking)}</span>
+          <span>{createResetBtn(reset)}</span>
+        </div>
       </div>
       <div className="row">
         <div className="col-sm-6">

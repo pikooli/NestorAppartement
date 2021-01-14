@@ -1,8 +1,8 @@
 import _ from "lodash";
 
-export function input(searchValue, setSearchValue, field) {
+export function input(searchValue, setSearchValue, field, big) {
   return (
-    <div className="col-sm">
+    <div className={big ? "col-sm" : "col-sm-2"}>
       <label className="form-label">
         <span>{_.capitalize(field)}</span>{" "}
         <input

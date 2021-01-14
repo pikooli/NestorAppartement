@@ -3,10 +3,10 @@ import { showPicture } from "../../../Utlis/ShowPicture";
 import { image } from "../../../Utlis/Url";
 import { joinTextNormal } from "../../../Utlis/TextStyle/Normal";
 
-function displayRoom(room, roomSave, saveRoom) {
+export function displayRoom(room, roomSave, saveRoom) {
   function selected(e) {
     e.preventDefault();
-    saveRoom(room);
+    if (saveRoom) saveRoom(room);
   }
 
   if (!room) return null;
@@ -14,12 +14,14 @@ function displayRoom(room, roomSave, saveRoom) {
     <li
       key={room.id}
       className={`list-group-item ${
-        roomSave && room.id === roomSave.id ? "border border-danger" : ""
+        roomSave && room.id === roomSave.id
+          ? "border border-2 border-success"
+          : ""
       }`}
       onClick={selected}
     >
       <div className="row">
-        <div className="col-sm-2">{showPicture(image.room, "room")}</div>
+        <div className="col-sm-3">{showPicture(image.room, "room")}</div>
         <div className="col-sm">
           {joinTextNormal("Number", room.number)}
           {joinTextNormal("Area", room.area)}
@@ -27,6 +29,20 @@ function displayRoom(room, roomSave, saveRoom) {
         </div>
       </div>
     </li>
+  );
+}
+
+export function roomThumbnail(room) {
+  if (!room) return null;
+  return (
+    <div className="row ">
+      <div className="col-sm-3">{showPicture(image.room, "room")}</div>
+      <div className="col-sm">
+        {joinTextNormal("Number", room.number)}
+        {joinTextNormal("Area", room.area)}
+        {joinTextNormal("Price", room.price)}
+      </div>
+    </div>
   );
 }
 
@@ -47,10 +63,9 @@ export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (
     <form>
       <div className="row">
-        {input(searchValue, setSearchValue, "number")}
-        {input(searchValue, setSearchValue, "area")}
-        {input(searchValue, setSearchValue, "price")}
-
+        {input(searchValue, setSearchValue, "number", true)}
+        {input(searchValue, setSearchValue, "area", true)}
+        {input(searchValue, setSearchValue, "price", true)}
         <div className="d-flex justify-content-center my-3">
           <input
             type="submit"
