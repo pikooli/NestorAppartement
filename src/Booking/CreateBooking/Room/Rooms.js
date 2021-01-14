@@ -4,6 +4,7 @@ import api from "../../../Utlis/ApiRequest";
 import { pagination, changePagination } from "../../../Utlis/Pagination";
 import { displayRooms, searchEntry } from "./Display";
 import { searchRoom } from "./SearchAlgorithm";
+import reduxActions from "../../../Redux/Actions/ReduxActions";
 
 function useLogic() {
   const [rooms, setRooms] = useState(null);
@@ -14,6 +15,7 @@ function useLogic() {
 
   useEffect(() => {
     api.get(url.room.base).then((data) => {
+      if (!data) return;
       setRooms(data.rooms);
       setDisplayRoomsArray(pagination(0, data.rooms));
     });
@@ -37,7 +39,7 @@ function useLogic() {
   };
 }
 
-export default function App({}) {
+export default function App({ roomSave, saveRoom }) {
   const {
     rooms,
     displayRoomsArray,
@@ -46,7 +48,6 @@ export default function App({}) {
     triggerSearch,
     setDisplayRoomsArray,
     searchResult,
-    setSearchResult,
     index,
     setIndex,
   } = useLogic();
@@ -60,7 +61,8 @@ export default function App({}) {
         : null}
       {displayRooms(
         searchResult ? searchResult : displayRoomsArray,
-        searchResult ? setSearchResult : setDisplayRoomsArray
+        roomSave,
+        saveRoom
       )}
     </div>
   );

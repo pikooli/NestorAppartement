@@ -6,8 +6,7 @@ function deleteRoomBtn(room, index, setArray) {
   function deleteRoom() {
     console.log(room.id);
     api.delete(url.room.id(room.id)).then((data) => {
-      console.log(data);
-      if (!data) return modalAlertError();
+      if (!data) return;
       setArray((rooms) => {
         let newRooms = rooms.map((room, key) => {
           if (key === index) return null;

@@ -14,6 +14,7 @@ function useLogic() {
 
   useEffect(() => {
     api.get(url.apartment.base).then((data) => {
+      if (!data) return;
       setApartments(data.apartments);
       setDisplayApartements(pagination(0, data.apartments));
     });

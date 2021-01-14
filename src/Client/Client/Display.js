@@ -39,6 +39,20 @@ export function clientsDisplay(client) {
   );
 }
 
+export function renderClientsArray(clientsArray) {
+  if (clientsArray) {
+    return (
+      <div className="card mb-2">
+        <ul className="list-group list-group-flush">
+          {clientsArray.map((client) => {
+            return clientsDisplay(client);
+          })}
+        </ul>
+      </div>
+    );
+  } else return null;
+}
+
 function input(searchValue, setSearchValue, field) {
   return (
     <div className="col-sm">

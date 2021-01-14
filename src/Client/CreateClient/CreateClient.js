@@ -43,7 +43,7 @@ function useLogic() {
         if (data) {
           modalAlert("Client created");
           window.location.href = "/client";
-        } else modalAlertError();
+        }
       });
     else errorMessage();
   }

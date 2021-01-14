@@ -1,12 +1,8 @@
-export function renderArrayDisplay(Array, elementDisplay) {
-  if (!Array) return null;
+export function createBookingBtn(triggerSave) {
   return (
-    <div className="card">
-      <ul className="list-group list-group-flush">
-        {Array.map((element) => {
-          return elementDisplay(element);
-        })}
-      </ul>
-    </div>
+    <button className="btn btn-primary" onClick={triggerSave}>
+      {" "}
+      save{" "}
+    </button>
   );
 }

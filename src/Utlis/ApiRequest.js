@@ -1,21 +1,32 @@
+import { modalAlertError } from "./Alert";
 const corsApi = "https://stark-fjord-10743.herokuapp.com/";
 
 const api = {
   get: async (url) => {
     if (url)
-      return await fetch(url).then(async (data) => {
-        if (data.status === 200) return await data.json();
-        else return null;
-      });
+      return await fetch(url)
+        .then(async (data) => {
+          if (data.status === 200) return await data.json();
+          else {
+            data.text().then((text) => modalAlertError(text));
+            return null;
+          }
+        })
+        .catch((error) => console.log("error", error));
   },
   delete: async (url) => {
     if (url)
       return await fetch(corsApi + url, {
         method: "DELETE",
-      }).then(async (data) => {
-        if (data.status === 202) return true;
-        else return null;
-      });
+      })
+        .then(async (data) => {
+          if (data.status === 202) return true;
+          else {
+            data.text().then((text) => modalAlertError(text));
+            return null;
+          }
+        })
+        .catch((error) => console.log("error", error));
   },
   post: async (url, body) => {
     if (body)
@@ -25,10 +36,15 @@ const api = {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
-      }).then(async (data) => {
-        if (data.status === 201) return true;
-        else return null;
-      });
+      })
+        .then(async (data) => {
+          if (data.status === 201) return true;
+          else {
+            data.text().then((text) => modalAlertError(text));
+            return null;
+          }
+        })
+        .catch((error) => console.log("error", error));
     else return null;
   },
 };

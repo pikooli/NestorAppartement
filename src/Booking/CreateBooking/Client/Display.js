@@ -1,43 +1,63 @@
-export function createClientBtn() {
-  return (
-    <div className="d-flex justify-content-end">
-      <a type="button" className="btn btn-primary my-3 " href="/createClient">
-        Create Client
-      </a>
-    </div>
-  );
-}
+export function clientsDisplay(client, clientSave, saveClient) {
+  function selected(e) {
+    e.preventDefault();
+    saveClient(client);
+  }
 
-export function clientsDisplay(client) {
   if (!client) return null;
+
   return (
-    <li key={client.id} className="list-group-item" key={client.id}>
-      <a href={`client/${client.id}`} className="float-left container black">
-        <div className="row">
-          <div className="col-sm-2">
-            <img
-              className="rounded img-fluid"
-              src="https://100k-faces.glitch.me/random-image"
-              alt="customer"
-            />
-          </div>
-          <div className="col-sm-2">
-            <div>
-              first name : {client.firstName}
-              <br />
-              lastName : {client.lastName} <br />
-              Phone :{client.phone} <br />
-              birthDate : {client.birthDate}
-              <br />
-              nationality : {client.nationality}
-              <br /> booking : {client.bookings ? client.bookings.length : null}
-            </div>
+    <li
+      key={client.id}
+      className={`list-group-item ${
+        clientSave && client.id === clientSave.id ? "border border-danger" : ""
+      }`}
+      onClick={(e) => selected(e)}
+    >
+      <div className="row">
+        <div className="col-sm-2">
+          <img
+            className="rounded img-fluid"
+            src="https://100k-faces.glitch.me/random-image"
+            alt="customer"
+          />
+        </div>
+        <div className="col-sm">
+          <div>
+            first name : {client.firstName}
+            <br />
+            lastName : {client.lastName} <br />
+            Phone :{client.phone} <br />
+            birthDate : {client.birthDate}
+            <br />
+            nationality : {client.nationality}
+            <br /> booking : {client.bookings ? client.bookings.length : null}
           </div>
         </div>
-      </a>
+      </div>
+      <a
+        href={`client/${client.id}`}
+        className="float-left container black"
+      ></a>
     </li>
   );
 }
+
+export function renderClientsArray(clientsArray, clientSave, saveClient) {
+  if (clientsArray) {
+    return (
+      <div className="card mb-2">
+        <ul className="list-group list-group-flush">
+          {clientsArray.map((client) => {
+            return clientsDisplay(client, clientSave, saveClient);
+          })}
+        </ul>
+      </div>
+    );
+  } else return null;
+}
+
+//  seach input form
 
 function input(searchValue, setSearchValue, field) {
   return (

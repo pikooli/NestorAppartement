@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { pagination, changePagination } from "../../../Utlis/Pagination";
 import url from "../../../Utlis/Url";
 import api from "../../../Utlis/ApiRequest";
-import { clientsDisplay, createClientBtn, searchEntry } from "./Display";
+import { renderClientsArray, searchEntry } from "./Display";
 import { searchClient } from "./SearchClient";
+import reduxActions from "../../../Redux/Actions/ReduxActions";
 
 function useLogic() {
   const [clients, setClients] = useState(null);
@@ -15,24 +16,11 @@ function useLogic() {
 
   useEffect(() => {
     api.get(url.client.base).then((data) => {
+      if (!data) return;
       setClients(data.clients);
       setDisplayClients(pagination(0, data.clients));
     });
   }, []);
-
-  function renderClientsArray(clientsArray) {
-    if (clientsArray) {
-      return (
-        <div className="card mb-2">
-          <ul className="list-group list-group-flush">
-            {clientsArray.map((client) => {
-              return clientsDisplay(client);
-            })}
-          </ul>
-        </div>
-      );
-    } else return null;
-  }
 
   function triggerSearch() {
     setSearchResult(searchClient(clients, searchValue));
@@ -53,7 +41,7 @@ function useLogic() {
   };
 }
 
-export default function App({}) {
+export default function App({ clientSave, saveClient }) {
   const {
     clients,
     renderClientsArray,
@@ -70,14 +58,13 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="textCenter my-3">Client</h1>
-      {createClientBtn()}
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       {!searchResult
         ? changePagination(index, setIndex, setDisplayClients, clients)
         : null}
       {searchResult
-        ? renderClientsArray(searchResult)
-        : renderClientsArray(displayClients)}
+        ? renderClientsArray(searchResult, clientSave, saveClient)
+        : renderClientsArray(displayClients, clientSave, saveClient)}
     </div>
   );
 }

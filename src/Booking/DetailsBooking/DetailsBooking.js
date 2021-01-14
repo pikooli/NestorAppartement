@@ -16,7 +16,10 @@ function useLogic() {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
-    api.get(url.booking.id(id)).then((data) => setBooking(data.booking));
+    api.get(url.booking.id(id)).then((data) => {
+      if (!data) return;
+      setBooking(data.booking);
+    });
   }, []);
 
   return { booking };

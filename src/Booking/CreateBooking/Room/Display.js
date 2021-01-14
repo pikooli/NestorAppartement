@@ -1,22 +1,29 @@
-import url from "../../../Utlis/Url";
-import api from "../../../Utlis/ApiRequest";
-import { modalAlert, modalAlertError } from "../../../Utlis/Alert";
+function displayRoom(room, roomSave, saveRoom) {
+  function selected(e) {
+    e.preventDefault();
+    saveRoom(room);
+  }
 
-function displayRoom(room, index, setArray) {
   if (!room) return null;
   return (
-    <li key={index} className="list-group-item">
+    <li
+      key={room.id}
+      className={`list-group-item ${
+        roomSave && room.id === roomSave.id ? "border border-danger" : ""
+      }`}
+      onClick={selected}
+    >
       number {room.number} area {room.area} price {room.price}{" "}
     </li>
   );
 }
 
-export function displayRooms(rooms, setArray) {
+export function displayRooms(rooms, roomSave, saveRoom) {
   if (!rooms) return null;
   return (
     <div className="card mb-3">
       <ul className="list-group list-group-flush">
-        {rooms.map((room, index) => displayRoom(room, index, setArray))}
+        {rooms.map((room) => displayRoom(room, roomSave, saveRoom))}
       </ul>
     </div>
   );

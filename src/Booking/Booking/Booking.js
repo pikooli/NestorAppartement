@@ -17,6 +17,7 @@ function useLogic() {
 
   useEffect(() => {
     api.get(url.booking.base).then((data) => {
+      if (!data) return;
       setBookings(data.bookings);
       setDisplayBookings(pagination(0, data.bookings));
     });

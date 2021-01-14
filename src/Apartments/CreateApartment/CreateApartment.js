@@ -22,7 +22,7 @@ function useLogic() {
           resetFunction();
           modalAlert("Your apartment have been created");
           window.location.href = "/";
-        } else modalAlertError();
+        }
       });
     else if (!createApValue.number) modalAlertError("You didn't give a number");
     else if (!createApValue.name) modalAlertError("You didn't give a name");

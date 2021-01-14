@@ -52,7 +52,7 @@ function deleteCLient() {
 }
 
 function getClient() {
-  return store.getState().cleint;
+  return store.getState().client;
 }
 function setRoom(room) {
   if (typeof room === "object") {

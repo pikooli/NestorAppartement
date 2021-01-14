@@ -14,6 +14,7 @@ function useLogic() {
 
   useEffect(() => {
     api.get(url.room.base).then((data) => {
+      if (!data) return;
       setRooms(data.rooms);
       setDisplayRoomsArray(pagination(0, data.rooms));
     });

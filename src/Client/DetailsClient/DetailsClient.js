@@ -14,7 +14,10 @@ function useLogic() {
   let { id } = useParams();
   const [client, setClient] = useState({});
   useEffect(() => {
-    api.get(url.client.id(id)).then((data) => setClient(data.client));
+    api.get(url.client.id(id)).then((data) => {
+      if (!data) return;
+      setClient(data.client);
+    });
   }, []);
 
   return { client };
