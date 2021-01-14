@@ -70,6 +70,7 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="textCenter my-3">Client</h1>
+      {createClientBtn()}
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       {!searchResult
         ? changePagination(index, setIndex, setDisplayClients, clients)

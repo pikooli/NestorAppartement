@@ -1,3 +1,13 @@
+export function createClientBtn() {
+  return (
+    <div className="d-flex justify-content-end">
+      <a type="button" className="btn btn-primary my-3 " href="/createClient">
+        Create Client
+      </a>
+    </div>
+  );
+}
+
 export function clientsDisplay(client) {
   if (!client) return null;
   return (
@@ -11,7 +21,7 @@ export function clientsDisplay(client) {
               alt="customer"
             />
           </div>
-          <div className="col-sm">
+          <div className="col-sm-2">
             <div>
               first name : {client.firstName}
               <br />
@@ -29,13 +39,11 @@ export function clientsDisplay(client) {
   );
 }
 
-// Search input field
-
 function input(searchValue, setSearchValue, field) {
   return (
     <div className="col-sm">
       <label className="form-label">
-        {field}
+        Client {field}
         <input
           type="text"
           className="form-control"
@@ -56,7 +64,7 @@ function input(searchValue, setSearchValue, field) {
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (
     <form>
-      <div className="row ">
+      <div className="row textCenter">
         {input(searchValue, setSearchValue, "firstName")}
         {input(searchValue, setSearchValue, "lastName")}
         {input(searchValue, setSearchValue, "phone")}

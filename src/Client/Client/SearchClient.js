@@ -1,3 +1,5 @@
+import { checkIfEntryInArrayWithoutMainField } from "../../Utlis/SearchFunction/SearchWithoutMainField";
+
 export function searchClient(clients, searchValue) {
   let retArray = [];
   if (
@@ -10,55 +12,48 @@ export function searchClient(clients, searchValue) {
     return null;
 
   if (searchValue.firstName) {
-    clients.forEach((client) => {
-      if (client.firstName === searchValue.firstName) retArray.push(client);
-    });
+    retArray = checkIfEntryInArrayWithoutMainField(
+      clients,
+      retArray,
+      searchValue,
+      "firstName"
+    );
   }
 
   if (searchValue.lastName) {
-    if (retArray.length)
-      retArray = retArray.map((client) => {
-        return client.lastName === searchValue.lastName ? client : null;
-      });
-    else
-      clients.forEach((client) => {
-        if (client.lastName === searchValue.lastName) retArray.push(client);
-      });
+    retArray = checkIfEntryInArrayWithoutMainField(
+      clients,
+      retArray,
+      searchValue,
+      "lastName"
+    );
   }
 
   if (searchValue.phone) {
-    if (retArray.length)
-      retArray = retArray.map((client) => {
-        return client.phone === searchValue.phone ? client : null;
-      });
-    else
-      clients.forEach((client) => {
-        if (client.nationality === searchValue.nationality)
-          retArray.push(client);
-      });
+    retArray = checkIfEntryInArrayWithoutMainField(
+      clients,
+      retArray,
+      searchValue,
+      "phone"
+    );
   }
 
   if (searchValue.birthDate) {
-    if (retArray.length)
-      retArray = retArray.map((client) => {
-        return client.birthDate === searchValue.birthDate ? client : null;
-      });
-    else
-      clients.forEach((client) => {
-        if (client.birthDate === searchValue.birthDate) retArray.push(client);
-      });
+    retArray = checkIfEntryInArrayWithoutMainField(
+      clients,
+      retArray,
+      searchValue,
+      "birthDate"
+    );
   }
 
   if (searchValue.nationality) {
-    if (retArray.length)
-      retArray = retArray.map((client) => {
-        return client.nationality === searchValue.nationality ? client : null;
-      });
-    else
-      clients.forEach((client) => {
-        if (client.nationality === searchValue.nationality)
-          retArray.push(client);
-      });
+    retArray = checkIfEntryInArrayWithoutMainField(
+      clients,
+      retArray,
+      searchValue,
+      "nationality"
+    );
   }
 
   return retArray;
