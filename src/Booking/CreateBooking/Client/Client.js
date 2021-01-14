@@ -59,12 +59,12 @@ export default function App({ clientSave, saveClient }) {
     <div className="container">
       <h1 className="textCenter my-3">Client</h1>
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
-      {!searchResult
-        ? changePagination(index, setIndex, setDisplayClients, clients)
-        : null}
       {searchResult
         ? renderClientsArray(searchResult, clientSave, saveClient)
         : renderClientsArray(displayClients, clientSave, saveClient)}
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayClients, clients)
+        : null}
     </div>
   );
 }

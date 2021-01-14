@@ -1,32 +1,6 @@
 import { image } from "../../Utlis/Url";
 import { showPicture } from "../../Utlis/ShowPicture";
-
-function input(createClientValue, setCreateClientValue, fieldInput) {
-  return (
-    <div className="col-sm mb-3">
-      <label className="form-label">
-        Client {fieldInput}
-        <input
-          type="text"
-          className="form-control"
-          id={fieldInput}
-          placeholder={fieldInput}
-          value={
-            createClientValue && createClientValue[fieldInput]
-              ? createClientValue[fieldInput]
-              : ""
-          }
-          onChange={(e) =>
-            setCreateClientValue((val) => {
-              return { ...val, [fieldInput]: e.target.value };
-            })
-          }
-          required
-        ></input>
-      </label>
-    </div>
-  );
-}
+import { input } from "../../Utlis/Inputs";
 
 export function createClientForm(
   createClientValue,
@@ -35,7 +9,7 @@ export function createClientForm(
 ) {
   return (
     <form className="row">
-      {showPicture(image.client, "client")}
+      <div className="col-sm-2">{showPicture(image.client, "client")}</div>
       <div className="col-sm mb-3">
         <div className="row">
           {input(createClientValue, setCreateClientValue, "firstName")}

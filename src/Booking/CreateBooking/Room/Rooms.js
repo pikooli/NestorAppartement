@@ -56,14 +56,14 @@ export default function App({ roomSave, saveRoom }) {
     <div className="container">
       <h1 className="text-center my-3">Room</h1>
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
-      {!searchResult
-        ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)
-        : null}
       {displayRooms(
         searchResult ? searchResult : displayRoomsArray,
         roomSave,
         saveRoom
       )}
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)
+        : null}
     </div>
   );
 }

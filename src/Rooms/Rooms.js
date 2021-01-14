@@ -55,7 +55,9 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="text-center my-3">Room</h1>
-      <div className=" btn btn-primary mb-3 bg-white border-white">test</div>
+      <div className=" btn btn-primary mb-3 bg-white border-white">
+        Empty space
+      </div>
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       {displayRooms(
         searchResult ? searchResult : displayRoomsArray,

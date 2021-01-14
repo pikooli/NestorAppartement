@@ -57,9 +57,11 @@ export default function App({}) {
 
   return (
     <div className="container">
-      <h1 className="text-center">Create booking</h1>
-      {createBookingBtn(triggerBooking)}
-      {createResetBtn(reset)}
+      <h1 className="text-center my-3">Create booking</h1>
+      <div className="d-flex justify-content-end">
+        <span className="mx-5">{createBookingBtn(triggerBooking)}</span>
+        <span>{createResetBtn(reset)}</span>
+      </div>
       <div className="row">
         <div className="col-sm-6">
           <Room roomSave={roomSave} saveRoom={saveRoom} />

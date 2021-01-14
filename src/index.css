@@ -59,3 +59,9 @@ a:hover {
 .textCenter {
   text-align: center;
 }
+
+.right {
+  position: absolute;
+  bottom: 33%;
+  right: 0;
+}

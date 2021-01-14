@@ -3,7 +3,12 @@ import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { pagination, changePagination } from "../../Utlis/Pagination";
 import { searchApartment } from "./SearchApartments";
-import { createApartmentBtn, apartmentDisplay, searchEntry } from "./Display";
+import {
+  createApartmentBtn,
+  apartmentDisplay,
+  searchEntry,
+  renderApartmentsArray,
+} from "./Display";
 
 function useLogic() {
   const [apartments, setApartments] = useState(null);
@@ -20,18 +25,6 @@ function useLogic() {
     });
   }, []);
 
-  function renderApartmentsArray() {
-    if (searchResult)
-      return searchResult.map((apartment) => {
-        return apartmentDisplay(apartment);
-      });
-    else if (displayApartements)
-      return displayApartements.map((apartment) => {
-        return apartmentDisplay(apartment);
-      });
-    else return null;
-  }
-
   function triggerSearch() {
     setSearchResult(searchApartment(apartments, searchValue));
   }
@@ -45,6 +38,7 @@ function useLogic() {
     setSearchValue,
     searchValue,
     searchResult,
+    displayApartements,
     triggerSearch,
   };
 }
@@ -59,6 +53,7 @@ export default function App() {
     setSearchValue,
     searchValue,
     searchResult,
+    displayApartements,
     triggerSearch,
   } = useLogic();
   return (
@@ -68,7 +63,9 @@ export default function App() {
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       <div className="card mb-2">
         <ul className="list-group list-group-flush">
-          {renderApartmentsArray()}
+          {searchResult
+            ? renderApartmentsArray(searchResult)
+            : renderApartmentsArray(displayApartements)}
         </ul>
       </div>
       {!searchResult

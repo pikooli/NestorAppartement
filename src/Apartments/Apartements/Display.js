@@ -2,6 +2,7 @@ import ReduxActions from "../../Redux/Actions/ReduxActions";
 import { input } from "../../Utlis/Inputs";
 import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
+import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
 
 export function createApartmentBtn() {
   return (
@@ -20,7 +21,7 @@ export function createApartmentBtn() {
 export function apartmentDisplay(apartment) {
   if (!apartment) return null;
   return (
-    <li className="list-group-item " key={apartment.id}>
+    <li className="list-group-item" key={apartment.id}>
       <a
         className="float-left container"
         href={`apartment/${apartment.id}`}
@@ -36,22 +37,27 @@ export function apartmentDisplay(apartment) {
           </div>
           <div className="col-sm text-dark">
             <h3>Ap N°{apartment.number}</h3>
-            <p>
-              Apartment name : {apartment.name}
-              <br />
-              Apartment street : {apartment.street}
-              <br />
-              Apartment zipCode : {apartment.zipCode}
-              <br />
-              Apartment rooms : {apartment.rooms.length}
-              <br />
-            </p>
+            {joinTextNormal("Apartment name", apartment.name)}
+            {joinTextNormal("Apartment street", apartment.street)}
+            {joinTextNormal("Apartment zipCode", apartment.zipCode)}
+            {joinTextNormal(
+              "Apartment nbRooms",
+              apartment.rooms ? apartment.rooms.length : 0
+            )}
           </div>
         </div>
       </a>
     </li>
   );
 }
+
+export function renderApartmentsArray(apartementArray) {
+  if (Array.isArray(apartementArray) && apartementArray.length)
+    return apartementArray.map((apartment) => {
+      return apartmentDisplay(apartment);
+    });
+}
+//  search input
 
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {
   return (

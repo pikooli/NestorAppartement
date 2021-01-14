@@ -10,7 +10,7 @@ export function input(searchValue, setSearchValue, field) {
           className="form-control"
           placeholder={field}
           name={field}
-          value={searchValue[field] ? searchValue[field] : ""}
+          value={searchValue && searchValue[field] ? searchValue[field] : ""}
           onChange={(e) =>
             setSearchValue((state) => {
               return { ...state, [field]: e.target.value };

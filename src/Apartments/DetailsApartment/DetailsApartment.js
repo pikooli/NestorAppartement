@@ -19,9 +19,9 @@ export default function App({}) {
 
   return (
     <div className="container">
-      <h1>Details Apartemnt</h1>
-      <p>{id}</p>
+      <h1 className="text-center my-3">Details Apartemnt</h1>
       {createRoomBtn(id)}
+      <span className="d-flex justify-content-end">{id}</span>
       {apartmentDisplay(apartment)}
       <h3 className="my-3">List of Rooms</h3>
       {displayRooms(apartment)}

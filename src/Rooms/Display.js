@@ -3,6 +3,7 @@ import api from "../Utlis/ApiRequest";
 import { input } from "../Utlis/Inputs";
 import { showPicture } from "../Utlis/ShowPicture";
 import { image } from "../Utlis/Url";
+import { joinTextNormal } from "../Utlis/TextStyle/Normal";
 
 function deleteRoomBtn(room, index, setArray) {
   function deleteRoom() {
@@ -18,7 +19,7 @@ function deleteRoomBtn(room, index, setArray) {
     });
   }
   return (
-    <button className="btn btn-primary " onClick={deleteRoom}>
+    <button className="btn btn-primary right me-3" onClick={deleteRoom}>
       X
     </button>
   );
@@ -27,12 +28,14 @@ function deleteRoomBtn(room, index, setArray) {
 function displayRoom(room, index, setArray) {
   if (!room) return null;
   return (
-    <li key={index} className="list-group-item">
+    <li key={index} className="list-group-item my-3">
       <div className="row">
         <div className="col-sm-2">{showPicture(image.room, "room")}</div>
         <div className="col-sm">
-          number {room.number} area {room.area} price {room.price}{" "}
-          <div>{deleteRoomBtn(room, index, setArray)}</div>
+          {joinTextNormal("Room number", room.number)}
+          {joinTextNormal("Room area", room.area)}
+          {joinTextNormal("Room price", room.price)}
+          <span>{deleteRoomBtn(room, index, setArray)}</span>
         </div>
       </div>
     </li>

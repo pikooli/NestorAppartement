@@ -1,5 +1,7 @@
 import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
+import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
+import { isArrayEmpty } from "../../Utlis/IsArrayEmpty";
 
 export function createRoomBtn(id) {
   return (
@@ -22,15 +24,39 @@ export function resetBtn(resetFunction) {
 }
 
 function removeRoomBtn(index, removeRoom) {
-  return <button onClick={(e) => removeRoom(e, index)}>x</button>;
+  return (
+    <button
+      className="btn btn-primary right"
+      onClick={(e) => removeRoom(e, index)}
+    >
+      x
+    </button>
+  );
 }
 
 function displayRoom(room, index, removeRoom) {
   if (!room) return null;
   return (
-    <li key={index} className="list-group-item">
-      {room.number} {room.area} {room.price} {removeRoomBtn(index, removeRoom)}
+    <li key={index} className="list-group-item my-2">
+      {joinTextNormal("Room number", room.number)}
+      {joinTextNormal("Room area", room.area)}
+      {joinTextNormal("Room price", room.price)}
+      {removeRoomBtn(index, removeRoom)}
     </li>
+  );
+}
+
+export function displayRooms(rooms, removeRoom) {
+  console.log(rooms, rooms.length);
+  if (!Array.isArray(rooms) || isArrayEmpty(rooms)) return null;
+  return (
+    <div className="card mt-3">
+      <ul className="list-group list-group-flush">
+        {rooms
+          ? rooms.map((room, index) => displayRoom(room, index, removeRoom))
+          : null}
+      </ul>
+    </div>
   );
 }
 
@@ -87,18 +113,5 @@ export function createApartmentForm(
         Submit
       </button>
     </form>
-  );
-}
-
-export function displayRooms(rooms, removeRoom) {
-  if (!rooms) return null;
-  return (
-    <div className="card">
-      <ul className="list-group list-group-flush">
-        {rooms
-          ? rooms.map((room, index) => displayRoom(room, index, removeRoom))
-          : null}
-      </ul>
-    </div>
   );
 }
