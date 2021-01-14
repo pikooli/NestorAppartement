@@ -1,6 +1,7 @@
 import { input } from "../../../Utlis/Inputs";
 import { showPicture } from "../../../Utlis/ShowPicture";
 import { image } from "../../../Utlis/Url";
+import { joinTextNormal } from "../../../Utlis/TextStyle/Normal";
 
 export function clientsDisplay(client, clientSave, saveClient) {
   function selected(e) {
@@ -21,16 +22,14 @@ export function clientsDisplay(client, clientSave, saveClient) {
       <div className="row">
         <div className="col-sm-2">{showPicture(image.client, "client")}</div>
         <div className="col-sm">
-          <div>
-            first name : {client.firstName}
-            <br />
-            lastName : {client.lastName} <br />
-            Phone :{client.phone} <br />
-            birthDate : {client.birthDate}
-            <br />
-            nationality : {client.nationality}
-            <br /> booking : {client.bookings ? client.bookings.length : null}
-          </div>
+          {joinTextNormal("FirstName", client.firstName)}
+          {joinTextNormal("LastName", client.lastName)}
+          {joinTextNormal("Phone", client.phone)}
+          {joinTextNormal("Nationality", client.nationality)}
+          {joinTextNormal(
+            "NbBooking",
+            client.bookings ? client.bookings.length : 0
+          )}
         </div>
       </div>
       <a

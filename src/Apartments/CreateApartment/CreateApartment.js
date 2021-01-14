@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoomBtn, createApartmentForm, resetBtn } from "./Display";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
+import { createResetBtn } from "../../Utlis/ResetBtn";
 import { modalAlert, modalAlertError } from "../../Utlis/Alert";
 import ReduxActions from "../../Redux/Actions/ReduxActions";
 
@@ -96,7 +97,9 @@ export default function App({}) {
         submitForm,
         removeRoom
       )}
-      {resetBtn(resetFunction)}
+      <div className="d-flex justify-content-end">
+        {createResetBtn(resetFunction)}
+      </div>
     </div>
   );
 }

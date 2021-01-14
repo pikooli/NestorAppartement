@@ -1,5 +1,6 @@
 import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
+import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
 
 function displayHeader(booking) {
   return (
@@ -19,10 +20,10 @@ function displayApartment(booking) {
         <div className="col-sm">{showPicture(image.apartment, "bulding")}</div>
         <div className="col-sm ">
           <h5>Apartment</h5>
-          ap number : {booking.room.apartment.number} <br />
-          ap name : {booking.room.apartment.name} <br />
-          ap street : {booking.room.apartment.street} <br />
-          ap zipcode : {booking.room.apartment.zipCode}
+          {joinTextNormal("Number", booking.room.apartment.number)}
+          {joinTextNormal("Name", booking.room.apartment.name)}
+          {joinTextNormal("Street", booking.room.apartment.street)}
+          {joinTextNormal("zipCode", booking.room.apartment.zipCode)}
         </div>
       </div>
     </div>
@@ -37,9 +38,9 @@ function displayRoom(booking) {
         <div className="col-sm">{showPicture(image.room, "room")}</div>
         <div className="col-sm ">
           <h5>Room</h5>
-          room number : {booking.room.number} <br />
-          room area : {booking.room.area} <br />
-          room price : {booking.room.price}
+          {joinTextNormal("Number", booking.room.number)}
+          {joinTextNormal("Area", booking.room.area)}
+          {joinTextNormal("Price", booking.room.price)}
         </div>
       </div>
     </div>
@@ -54,9 +55,9 @@ function displayClient(booking) {
         <div className="col-sm">{showPicture(image.client, "client")}</div>
         <div className="col-sm ">
           <h5>Client</h5>
-          client firstname : {booking.client.firstName} <br />
-          client lastName : {booking.client.lastName} <br />
-          client phone : {booking.client.phone}
+          {joinTextNormal("Firstname", booking.client.firstName)}
+          {joinTextNormal("LastName", booking.client.lastName)}
+          {joinTextNormal("Price", booking.client.phone)}
         </div>
       </div>
     </div>
