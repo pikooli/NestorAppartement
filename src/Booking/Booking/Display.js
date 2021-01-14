@@ -1,3 +1,6 @@
+import { showPicture } from "../../Utlis/ShowPicture";
+import { image } from "../../Utlis/Url";
+
 function displayHeader(booking) {
   return (
     <div>
@@ -13,13 +16,7 @@ function displayApartment(booking) {
   return (
     <div className="col-sm-4 mb-3">
       <div className="row">
-        <div className="col-sm">
-          <img
-            className="rounded img-fluid"
-            src="https://www.jll.fr/images/global/treant-and-insights/global-cities-why-timber-buildings.jpg.rendition/cq5dam.web.1280.1280.jpeg"
-            alt="building"
-          />
-        </div>
+        <div className="col-sm">{showPicture(image.apartment, "bulding")}</div>
         <div className="col-sm ">
           <h5>Apartment</h5>
           ap number : {booking.room.apartment.number} <br />
@@ -37,13 +34,7 @@ function displayRoom(booking) {
   return (
     <div className="col-sm-4 mb-3">
       <div className="row">
-        <div className="col-sm">
-          <img
-            className="rounded img-fluid"
-            src="https://cdn.decoist.com/wp-content/uploads/2020/02/Beautiful-small-white-living-room-blends-monochromatic-beauty-with-modernity-53868.jpg"
-            alt="building"
-          />
-        </div>
+        <div className="col-sm">{showPicture(image.room, "room")}</div>
         <div className="col-sm ">
           <h5>Room</h5>
           room number : {booking.room.number} <br />
@@ -60,13 +51,7 @@ function displayClient(booking) {
   return (
     <div className="col-sm-4 mb-3">
       <div className="row">
-        <div className="col-sm">
-          <img
-            className="rounded img-fluid"
-            src="https://100k-faces.glitch.me/random-image"
-            alt="customer"
-          />
-        </div>
+        <div className="col-sm">{showPicture(image.client, "client")}</div>
         <div className="col-sm ">
           <h5>Client</h5>
           client firstname : {booking.client.firstName} <br />

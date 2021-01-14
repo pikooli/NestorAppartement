@@ -1,3 +1,5 @@
+import { showPicture } from "../../Utlis/ShowPicture";
+import { image } from "../../Utlis/Url";
 export function createRoomBtn(id) {
   return (
     <div className="d-flex justify-content-end">
@@ -15,11 +17,7 @@ export function apartmentDisplay(apartment) {
       <a className="float-left container" href={`apartment/${apartment.id}`}>
         <div className="row">
           <div className="col-sm-2">
-            <img
-              className="rounded img-fluid"
-              src="https://www.jll.fr/images/global/treant-and-insights/global-cities-why-timber-buildings.jpg.rendition/cq5dam.web.1280.1280.jpeg"
-              alt="building"
-            />
+            {showPicture(image.apartment, "bulding")}
           </div>
           <div className="col-sm text-dark">
             <h3>Apartment N°{apartment.number}</h3>

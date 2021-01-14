@@ -29,7 +29,7 @@ export default function App({}) {
   const { createRoomValue, setCreateRoomValue, submitRoom, id } = useLogic();
   return (
     <div className="container">
-      <h1>Create Room</h1>
+      <h1 className="textCenter my-3">Create Room</h1>
       {goBackBtn(id ? id : null)}
       {createRoomForm(createRoomValue, setCreateRoomValue, submitRoom)}
     </div>

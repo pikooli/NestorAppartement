@@ -1,3 +1,6 @@
+import { image } from "../../Utlis/Url";
+import { showPicture } from "../../Utlis/ShowPicture";
+
 function input(createClientValue, setCreateClientValue, fieldInput) {
   return (
     <div className="col-sm mb-3">
@@ -32,13 +35,7 @@ export function createClientForm(
 ) {
   return (
     <form className="row">
-      <div className="col-sm-2 mb-3">
-        <img
-          className="rounded img-fluid"
-          src="https://100k-faces.glitch.me/random-image"
-          alt="people"
-        />
-      </div>
+      {showPicture(image.client, "client")}
       <div className="col-sm mb-3">
         <div className="row">
           {input(createClientValue, setCreateClientValue, "firstName")}

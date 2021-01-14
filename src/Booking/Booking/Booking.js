@@ -57,10 +57,10 @@ export default function App({}) {
       <h1 className="text-center my-3">Bookings</h1>
       {createBookingBtn()}
       {searchInput(searchValue, setSearchValue, triggerSearch)}
-      {changePagination(index, setIndex, setDisplayBookings, bookings)}
       {searchResult
         ? renderBookingsDisplay(searchResult)
         : renderBookingsDisplay(displayBookings)}
+      {changePagination(index, setIndex, setDisplayBookings, bookings)}
     </div>
   );
 }

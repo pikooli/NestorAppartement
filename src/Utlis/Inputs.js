@@ -6,7 +6,7 @@ export function input(searchValue, setSearchValue, field) {
       <label className="form-label">
         <span>{_.capitalize(field)}</span>{" "}
         <input
-          type="text"
+          type={field === "price" ? "number" : "text"}
           className="form-control"
           placeholder={field}
           name={field}

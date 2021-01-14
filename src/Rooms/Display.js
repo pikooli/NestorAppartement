@@ -1,6 +1,8 @@
 import url from "../Utlis/Url";
 import api from "../Utlis/ApiRequest";
 import { input } from "../Utlis/Inputs";
+import { showPicture } from "../Utlis/ShowPicture";
+import { image } from "../Utlis/Url";
 
 function deleteRoomBtn(room, index, setArray) {
   function deleteRoom() {
@@ -26,8 +28,13 @@ function displayRoom(room, index, setArray) {
   if (!room) return null;
   return (
     <li key={index} className="list-group-item">
-      number {room.number} area {room.area} price {room.price}{" "}
-      {deleteRoomBtn(room, index, setArray)}
+      <div className="row">
+        <div className="col-sm-2">{showPicture(image.room, "room")}</div>
+        <div className="col-sm">
+          number {room.number} area {room.area} price {room.price}{" "}
+          <div>{deleteRoomBtn(room, index, setArray)}</div>
+        </div>
+      </div>
     </li>
   );
 }

@@ -57,13 +57,13 @@ export default function App({}) {
       <h1 className="text-center my-3">Room</h1>
       <div className=" btn btn-primary mb-3 bg-white border-white">test</div>
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
-      {!searchResult
-        ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)
-        : null}
       {displayRooms(
         searchResult ? searchResult : displayRoomsArray,
         searchResult ? setSearchResult : setDisplayRoomsArray
       )}
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)
+        : null}
     </div>
   );
 }

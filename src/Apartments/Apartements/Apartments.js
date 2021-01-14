@@ -66,14 +66,14 @@ export default function App() {
       <h1 className="textCenter my-3">Apartments</h1>
       {createApartmentBtn()}
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
-      {!searchResult
-        ? changePagination(index, setIndex, setDisplayApartements, apartments)
-        : null}
       <div className="card mb-2">
         <ul className="list-group list-group-flush">
           {renderApartmentsArray()}
         </ul>
       </div>
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayApartements, apartments)
+        : null}
     </div>
   );
 }

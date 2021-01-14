@@ -1,4 +1,6 @@
 import { input } from "../../Utlis/Inputs";
+import { image } from "../../Utlis/Url";
+import { showPicture } from "../../Utlis/ShowPicture";
 
 export function createClientBtn() {
   return (
@@ -16,14 +18,8 @@ export function clientsDisplay(client) {
     <li key={client.id} className="list-group-item" key={client.id}>
       <a href={`client/${client.id}`} className="float-left container black">
         <div className="row">
-          <div className="col-sm-2">
-            <img
-              className="rounded img-fluid"
-              src="https://100k-faces.glitch.me/random-image"
-              alt="customer"
-            />
-          </div>
-          <div className="col-sm-2">
+          <div className="col-sm-2">{showPicture(image.client, "client")}</div>
+          <div className="col-sm">
             <div>
               first name : {client.firstName}
               <br />

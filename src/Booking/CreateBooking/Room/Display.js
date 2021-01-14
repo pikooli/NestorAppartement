@@ -1,4 +1,7 @@
 import { input } from "../../../Utlis/Inputs";
+import { showPicture } from "../../../Utlis/ShowPicture";
+import { image } from "../../../Utlis/Url";
+
 function displayRoom(room, roomSave, saveRoom) {
   function selected(e) {
     e.preventDefault();
@@ -14,7 +17,12 @@ function displayRoom(room, roomSave, saveRoom) {
       }`}
       onClick={selected}
     >
-      number {room.number} area {room.area} price {room.price}{" "}
+      <div className="row">
+        <div className="col-sm-2">{showPicture(image.room, "room")}</div>
+        <div className="col-sm">
+          number {room.number} area {room.area} price {room.price}{" "}
+        </div>
+      </div>
     </li>
   );
 }

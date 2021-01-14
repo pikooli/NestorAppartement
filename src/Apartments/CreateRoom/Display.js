@@ -1,8 +1,11 @@
+import { showPicture } from "../../Utlis/ShowPicture";
+import { input } from "../../Utlis/Inputs";
+import { image } from "../../Utlis/Url";
 export function goBackBtn(id) {
   return (
     <div className="d-flex justify-content-end">
       <a
-        className="btn btn-primary my-3 "
+        className="btn btn-primary mb-3 "
         href={id ? `/apartment/${id}` : `/createApartment/`}
       >
         Go back
@@ -17,63 +20,16 @@ export function createRoomForm(
   submitForm
 ) {
   return (
-    <form className="row">
-      <div className="col-sm-2 mb-3">
-        <label className="form-label">
-          Room number
-          <input
-            type="text"
-            className="form-control"
-            placeholder="number"
-            value={createRoomValue.number ? createRoomValue.number : ""}
-            onChange={(e) =>
-              setCreateRoomValue((val) => {
-                return { ...val, number: e.target.value };
-              })
-            }
-            required
-          ></input>
-        </label>
-      </div>
-      <div className=" col-sm-2 mb-3">
-        <label className="form-label">
-          Room area
-          <input
-            type="text"
-            className="form-control"
-            placeholder="area"
-            value={createRoomValue.area ? createRoomValue.area : ""}
-            onChange={(e) =>
-              setCreateRoomValue((val) => {
-                return { ...val, area: e.target.value };
-              })
-            }
-            required
-          ></input>
-        </label>
-      </div>
-
-      <div className=" col-sm-2 mb-3">
-        <label className="form-label">
-          Room price €
-          <input
-            type="number"
-            className="form-control"
-            placeholder="price"
-            value={createRoomValue.price ? createRoomValue.price : ""}
-            onChange={(e) =>
-              setCreateRoomValue((val) => {
-                return { ...val, price: e.target.value };
-              })
-            }
-            min="0"
-            step="1"
-            required
-          ></input>
-        </label>
-      </div>
-
-      <button type="submit" className="btn btn-primary" onClick={submitForm}>
+    <form className="row mt-5 mb-3">
+      <div className="col-sm-2">{showPicture(image.room, "room")}</div>
+      {input(createRoomValue, setCreateRoomValue, "number")}
+      {input(createRoomValue, setCreateRoomValue, "area")}
+      {input(createRoomValue, setCreateRoomValue, "price")}
+      <button
+        type="submit"
+        className="btn btn-primary mt-5"
+        onClick={submitForm}
+      >
         Submit
       </button>
     </form>

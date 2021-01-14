@@ -1,5 +1,7 @@
 import ReduxActions from "../../Redux/Actions/ReduxActions";
 import { input } from "../../Utlis/Inputs";
+import { showPicture } from "../../Utlis/ShowPicture";
+import { image } from "../../Utlis/Url";
 
 export function createApartmentBtn() {
   return (
@@ -30,11 +32,7 @@ export function apartmentDisplay(apartment) {
       >
         <div className="row">
           <div className="col-sm-2">
-            <img
-              className="rounded img-fluid"
-              src="https://www.jll.fr/images/global/treant-and-insights/global-cities-why-timber-buildings.jpg.rendition/cq5dam.web.1280.1280.jpeg"
-              alt="building"
-            />
+            {showPicture(image.apartment, "building")}
           </div>
           <div className="col-sm text-dark">
             <h3>Ap N°{apartment.number}</h3>

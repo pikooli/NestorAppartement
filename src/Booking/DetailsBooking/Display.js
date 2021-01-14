@@ -1,3 +1,6 @@
+import { showPicture } from "../../Utlis/ShowPicture";
+import { image } from "../../Utlis/Url";
+
 function displayHeader(booking) {
   return (
     <div>
@@ -9,11 +12,7 @@ function displayHeader(booking) {
 function displayApartment(booking) {
   return (
     <div className="col-sm-4 mb-3">
-      <img
-        className="rounded img-fluid"
-        src="https://www.jll.fr/images/global/treant-and-insights/global-cities-why-timber-buildings.jpg.rendition/cq5dam.web.1280.1280.jpeg"
-        alt="building"
-      />
+      {showPicture(image.apartment, "building")}
       <h5>Apartment</h5>
       {booking.room.apartment.number} {booking.room.apartment.name}{" "}
       {booking.room.apartment.street} {booking.room.apartment.zipCode}
@@ -24,11 +23,7 @@ function displayApartment(booking) {
 function displayRoom(booking) {
   return (
     <div className="col-sm-4 mb-3">
-      <img
-        className="rounded img-fluid"
-        src="https://cdn.decoist.com/wp-content/uploads/2020/02/Beautiful-small-white-living-room-blends-monochromatic-beauty-with-modernity-53868.jpg"
-        alt="building"
-      />
+      {showPicture(image.room, "room")}
       <h5>Room</h5>
       {booking.room.number} {booking.room.area} {booking.room.price}
     </div>
@@ -38,11 +33,7 @@ function displayRoom(booking) {
 function displayClient(booking) {
   return (
     <div className="col-sm-4 mb-3">
-      <img
-        className="rounded img-fluid"
-        src="https://100k-faces.glitch.me/random-image"
-        alt="customer"
-      />
+      {showPicture(image.client, "client")}
       <h5>Client</h5>
       {booking.client.firstName} {booking.client.lastName}{" "}
       {booking.client.phone}

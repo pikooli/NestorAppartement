@@ -59,12 +59,12 @@ export default function App({}) {
       <h1 className="textCenter my-3">Client</h1>
       {createClientBtn()}
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
-      {!searchResult
-        ? changePagination(index, setIndex, setDisplayClients, clients)
-        : null}
       {searchResult
         ? renderClientsArray(searchResult)
         : renderClientsArray(displayClients)}
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayClients, clients)
+        : null}
     </div>
   );
 }

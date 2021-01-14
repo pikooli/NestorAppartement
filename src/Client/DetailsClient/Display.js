@@ -1,3 +1,6 @@
+import { image } from "../../Utlis/Url";
+import { showPicture } from "../../Utlis/ShowPicture";
+
 export function createClientBtn() {
   return (
     <div className="d-flex justify-content-end">
@@ -14,13 +17,7 @@ export function clientDisplay(client) {
     <li key={client.id} className="list-group-item my-5" key={client.id}>
       <div className="float-left container black">
         <div className="row">
-          <div className="col-sm-2">
-            <img
-              className="rounded img-fluid"
-              src="https://100k-faces.glitch.me/random-image"
-              alt="customer"
-            />
-          </div>
+          {showPicture(image.client, "client")}
           <div className="col-sm-2">
             <div>
               first name : {client.firstName}

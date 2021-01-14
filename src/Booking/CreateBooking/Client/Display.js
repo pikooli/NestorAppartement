@@ -1,4 +1,6 @@
 import { input } from "../../../Utlis/Inputs";
+import { showPicture } from "../../../Utlis/ShowPicture";
+import { image } from "../../../Utlis/Url";
 
 export function clientsDisplay(client, clientSave, saveClient) {
   function selected(e) {
@@ -17,13 +19,7 @@ export function clientsDisplay(client, clientSave, saveClient) {
       onClick={(e) => selected(e)}
     >
       <div className="row">
-        <div className="col-sm-2">
-          <img
-            className="rounded img-fluid"
-            src="https://100k-faces.glitch.me/random-image"
-            alt="customer"
-          />
-        </div>
+        <div className="col-sm-2">{showPicture(image.client, "client")}</div>
         <div className="col-sm">
           <div>
             first name : {client.firstName}

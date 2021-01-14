@@ -1,7 +1,10 @@
+import { showPicture } from "../../Utlis/ShowPicture";
+import { image } from "../../Utlis/Url";
+
 export function createRoomBtn(id) {
   return (
     <div className="d-flex justify-content-end">
-      <a className="btn btn-primary my-3 " href={`/createRoom/${id ? id : ""}`}>
+      <a className="btn btn-primary mb-3 " href={`/createRoom/${id ? id : ""}`}>
         Create room
       </a>
     </div>
@@ -18,6 +21,19 @@ export function resetBtn(resetFunction) {
   );
 }
 
+function removeRoomBtn(index, removeRoom) {
+  return <button onClick={(e) => removeRoom(e, index)}>x</button>;
+}
+
+function displayRoom(room, index, removeRoom) {
+  if (!room) return null;
+  return (
+    <li key={index} className="list-group-item">
+      {room.number} {room.area} {room.price} {removeRoomBtn(index, removeRoom)}
+    </li>
+  );
+}
+
 export function createApartmentForm(
   createApValue,
   setName,
@@ -26,13 +42,9 @@ export function createApartmentForm(
   removeRoom
 ) {
   return (
-    <form className="row">
-      <div className="col-sm-2 mb-3">
-        <img
-          className="rounded img-fluid"
-          src="https://www.jll.fr/images/global/treant-and-insights/global-cities-why-timber-buildings.jpg.rendition/cq5dam.web.1280.1280.jpeg"
-          alt="building"
-        />
+    <form className="row mt-5 mb-3">
+      <div className="col-sm-2 ">
+        {showPicture(image.apartment, "building")}
       </div>
       <div className="col-sm-2 mb-3">
         <label className="form-label">
@@ -67,23 +79,14 @@ export function createApartmentForm(
       {createApValue && createApValue.rooms
         ? displayRooms(createApValue.rooms, removeRoom)
         : null}
-      <button type="submit" className="btn btn-primary" onClick={submitForm}>
+      <button
+        type="submit"
+        className="btn btn-primary mt-5"
+        onClick={submitForm}
+      >
         Submit
       </button>
     </form>
-  );
-}
-
-function removeRoomBtn(index, removeRoom) {
-  return <button onClick={(e) => removeRoom(e, index)}>x</button>;
-}
-
-function displayRoom(room, index, removeRoom) {
-  if (!room) return null;
-  return (
-    <li key={index} className="list-group-item">
-      {room.number} {room.area} {room.price} {removeRoomBtn(index, removeRoom)}
-    </li>
   );
 }
 
