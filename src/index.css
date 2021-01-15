@@ -80,7 +80,7 @@ a:hover {
   min-height: 200px;
 }
 .maxHeigth {
-  max-height: 150px;
+  max-height: 140px;
 }
 @media only screen and (max-width: 464px) {
   .fullsize {

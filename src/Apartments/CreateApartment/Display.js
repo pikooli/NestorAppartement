@@ -5,26 +5,29 @@ import { isArrayEmpty } from "../../Utlis/IsArrayEmpty";
 import { removeBtn } from "../../Utlis/Btn/RemoveBtn";
 import { submitBtn } from "../../Utlis/Btn/SubmitBtn";
 
-function displayRoom(room, index, removeRoom) {
+function displayRoom(room, index, removeFunction) {
   if (!room) return null;
   return (
     <li key={index} className="list-group-item my-2">
-      {joinTextNormal("Room number", room.number)}
-      {joinTextNormal("Room area", room.area)}
-      {joinTextNormal("Room price", room.price)}
-      {removeBtn(index, removeRoom)}
+      <div className="row ">
+        <div className="col-sm-2">{showPicture(image.room, "room")}</div>
+        <div className="col-sm">
+          {joinTextNormal("Number", room.number)}
+          {joinTextNormal("Area", room.area)}
+          {joinTextNormal("Price", room.price)}
+          {removeBtn(index, removeFunction)}
+        </div>
+      </div>
     </li>
   );
 }
 
-export function displayRooms(rooms, removeRoom) {
+export function displayRooms(rooms, removeFunction) {
   if (!Array.isArray(rooms) || isArrayEmpty(rooms)) return null;
   return (
     <div className="card mt-3">
       <ul className="list-group list-group-flush">
-        {rooms
-          ? rooms.map((room, index) => displayRoom(room, index, removeRoom))
-          : null}
+        {rooms.map((room, index) => displayRoom(room, index, removeFunction))}
       </ul>
     </div>
   );

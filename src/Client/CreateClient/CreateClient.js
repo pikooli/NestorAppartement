@@ -25,6 +25,7 @@ function useLogic() {
       modalAlertError("You didn't put a nationality");
     else if (!createClientValue.birthDate)
       modalAlertError("You didn't put a birthDate");
+    else modalAlertError("Don't know what went wrong");
   }
 
   function submitForm(e) {
