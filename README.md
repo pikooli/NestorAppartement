@@ -13,6 +13,7 @@ Launch with "npm start"
 ````
 
 It have some minor test with jest, do "npm run test"
+I only test some button, you can see them in src/Utils/Btn
 
 Route : 
 ````
