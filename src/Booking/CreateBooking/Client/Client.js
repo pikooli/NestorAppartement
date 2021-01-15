@@ -68,6 +68,3 @@ export default function App({ clientSave, saveClient }) {
     </div>
   );
 }
-
-// ;<Link to="/client/test">DetailsClient</Link>
-//       <Link to="/CreateClient">CreateEditClient</Link>

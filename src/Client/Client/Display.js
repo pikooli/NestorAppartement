@@ -2,18 +2,9 @@ import { input } from "../../Utlis/Inputs";
 import { image } from "../../Utlis/Url";
 import { showPicture } from "../../Utlis/ShowPicture";
 import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
+import { searchBtn } from "../../Utlis/Btn/SearchBtn";
 
-export function createClientBtn() {
-  return (
-    <div className="d-flex justify-content-end">
-      <a type="button" className="btn btn-primary mb-3 " href="/createClient">
-        Create Client
-      </a>
-    </div>
-  );
-}
-
-export function clientsDisplay(client) {
+export function clientDisplay(client) {
   if (!client) return null;
   return (
     <li key={client.id} className="list-group-item" key={client.id}>
@@ -57,7 +48,7 @@ export function renderClientsArray(clientsArray) {
       <div className="card mb-2">
         <ul className="list-group list-group-flush">
           {clientsArray.map((client) => {
-            return clientsDisplay(client);
+            return clientDisplay(client);
           })}
         </ul>
       </div>
@@ -75,17 +66,7 @@ export function searchEntry(searchValue, setSearchValue, triggerSearch) {
 
         {input(searchValue, setSearchValue, "birthDate")}
         {input(searchValue, setSearchValue, "nationality")}
-        <div className="d-flex justify-content-center my-3">
-          <input
-            type="submit"
-            className="btn btn-primary "
-            value="Search"
-            onClick={(e) => {
-              e.preventDefault();
-              triggerSearch();
-            }}
-          ></input>
-        </div>
+        {searchBtn(triggerSearch)}
       </div>
     </form>
   );

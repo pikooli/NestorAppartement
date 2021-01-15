@@ -2,6 +2,7 @@ import { input } from "../../../Utlis/Inputs";
 import { showPicture } from "../../../Utlis/ShowPicture";
 import { image } from "../../../Utlis/Url";
 import { joinTextNormal } from "../../../Utlis/TextStyle/Normal";
+import { searchBtn } from "../../../Utlis/Btn/SearchBtn";
 
 export function clientsDisplay(client, clientSave, saveClient) {
   function selected(e) {
@@ -84,17 +85,7 @@ export function searchEntry(searchValue, setSearchValue, triggerSearch) {
 
         {input(searchValue, setSearchValue, "birthDate", true)}
         {input(searchValue, setSearchValue, "nationality", true)}
-        <div className="d-flex justify-content-center my-3">
-          <input
-            type="submit"
-            className="btn btn-primary "
-            value="Search"
-            onClick={(e) => {
-              e.preventDefault();
-              triggerSearch();
-            }}
-          ></input>
-        </div>
+        {searchBtn(triggerSearch)}
       </div>
     </form>
   );

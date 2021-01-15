@@ -64,7 +64,7 @@ function displayClient(booking) {
   );
 }
 
-function bookingDisplay(booking) {
+function displayBooking(booking) {
   if (!booking) return null;
   return (
     <div key={booking.id} className="list-group-item ">
@@ -86,21 +86,9 @@ export function renderBookingsDisplay(bookings) {
     <div className="card">
       <ul className="list-group list-group-flush">
         {bookings.map((booking) => {
-          return bookingDisplay(booking);
+          return displayBooking(booking);
         })}
       </ul>
-    </div>
-  );
-}
-
-// btn create booking
-
-export function createBookingBtn() {
-  return (
-    <div className="d-flex justify-content-end">
-      <a type="button" className="btn btn-primary mb-3 " href="/createBooking">
-        Create Booking
-      </a>
     </div>
   );
 }

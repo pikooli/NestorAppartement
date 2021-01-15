@@ -2,16 +2,6 @@ import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
 import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
 
-export function createRoomBtn(id) {
-  return (
-    <div className="d-flex justify-content-end">
-      <a className="btn btn-primary mb-3 " href={`/createRoom/${id ? id : ""}`}>
-        Create room
-      </a>
-    </div>
-  );
-}
-
 export function apartmentDisplay(apartment) {
   if (!apartment) return null;
   return (
@@ -22,11 +12,11 @@ export function apartmentDisplay(apartment) {
         </div>
         <div className="col-sm text-dark">
           <h3>Apartment N°{apartment.number}</h3>
-          {joinTextNormal("Apartment name", apartment.name)}
-          {joinTextNormal("Apartment street", apartment.street)}
-          {joinTextNormal("Apartment zipCode", apartment.zipCode)}
+          {joinTextNormal("Name", apartment.name)}
+          {joinTextNormal("Street", apartment.street)}
+          {joinTextNormal("ZipCode", apartment.zipCode)}
           {joinTextNormal(
-            "Apartment nbRooms",
+            "NbRooms",
             apartment.rooms ? apartment.rooms.length : 0
           )}
         </div>
@@ -39,9 +29,9 @@ function displayRoom(room, index) {
   if (!room) return null;
   return (
     <li key={index} className="list-group-item">
-      {joinTextNormal("Room number", room.number)}
-      {joinTextNormal("Room area", room.area)}
-      {joinTextNormal("Room price", room.price)}
+      {joinTextNormal("Number", room.number)}
+      {joinTextNormal("Area", room.area)}
+      {joinTextNormal("Price", room.price)}
     </li>
   );
 }

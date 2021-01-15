@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { pagination, changePagination } from "../../Utlis/Pagination";
+import { createBtn } from "../../Utlis/Btn/CreateBtn";
 import { searchApartment } from "./SearchApartments";
 import {
   createApartmentBtn,
@@ -59,7 +60,7 @@ export default function App() {
   return (
     <div className="container">
       <h1 className="textCenter my-3">Apartments</h1>
-      {createApartmentBtn()}
+      {createBtn("apartment", "/createApartment")}
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       <div className="card mb-2">
         <ul className="list-group list-group-flush">

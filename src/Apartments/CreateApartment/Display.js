@@ -2,37 +2,8 @@ import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
 import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
 import { isArrayEmpty } from "../../Utlis/IsArrayEmpty";
-
-export function createRoomBtn(id) {
-  return (
-    <div className="d-flex justify-content-end">
-      <a className="btn btn-primary mb-3 " href={`/createRoom/${id ? id : ""}`}>
-        Create room
-      </a>
-    </div>
-  );
-}
-
-export function resetBtn(resetFunction) {
-  return (
-    <div className="d-flex justify-content-end">
-      <button className="btn btn-danger my-3 " onClick={resetFunction}>
-        reset
-      </button>
-    </div>
-  );
-}
-
-function removeRoomBtn(index, removeRoom) {
-  return (
-    <button
-      className="btn btn-primary right"
-      onClick={(e) => removeRoom(e, index)}
-    >
-      x
-    </button>
-  );
-}
+import { removeBtn } from "../../Utlis/Btn/RemoveBtn";
+import { submitBtn } from "../../Utlis/Btn/SubmitBtn";
 
 function displayRoom(room, index, removeRoom) {
   if (!room) return null;
@@ -41,13 +12,12 @@ function displayRoom(room, index, removeRoom) {
       {joinTextNormal("Room number", room.number)}
       {joinTextNormal("Room area", room.area)}
       {joinTextNormal("Room price", room.price)}
-      {removeRoomBtn(index, removeRoom)}
+      {removeBtn(index, removeRoom)}
     </li>
   );
 }
 
 export function displayRooms(rooms, removeRoom) {
-  console.log(rooms, rooms.length);
   if (!Array.isArray(rooms) || isArrayEmpty(rooms)) return null;
   return (
     <div className="card mt-3">
@@ -74,7 +44,7 @@ export function createApartmentForm(
       </div>
       <div className="col-sm-2 mb-3">
         <label className="form-label">
-          Apartment number
+          Number
           <input
             type="text"
             className="form-control"
@@ -89,7 +59,7 @@ export function createApartmentForm(
       </div>
       <div className=" col-sm-2 mb-3">
         <label className="form-label">
-          Apartment name
+          Name
           <input
             type="text"
             className="form-control"
@@ -105,13 +75,7 @@ export function createApartmentForm(
       {createApValue && createApValue.rooms
         ? displayRooms(createApValue.rooms, removeRoom)
         : null}
-      <button
-        type="submit"
-        className="btn btn-primary mt-5"
-        onClick={submitForm}
-      >
-        Submit
-      </button>
+      {submitBtn(submitForm)}
     </form>
   );
 }

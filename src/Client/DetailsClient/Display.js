@@ -2,16 +2,6 @@ import { image } from "../../Utlis/Url";
 import { showPicture } from "../../Utlis/ShowPicture";
 import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
 
-export function createClientBtn() {
-  return (
-    <div className="d-flex justify-content-end">
-      <a type="button" className="btn btn-primary my-3 " href="/createClient">
-        Create Client
-      </a>
-    </div>
-  );
-}
-
 export function clientDisplay(client) {
   if (!client) return null;
   return (

@@ -1,6 +1,7 @@
 import { image } from "../../Utlis/Url";
 import { showPicture } from "../../Utlis/ShowPicture";
 import { input } from "../../Utlis/Inputs";
+import { submitBtn } from "../../Utlis/Btn/SubmitBtn";
 
 export function createClientForm(
   createClientValue,
@@ -22,13 +23,7 @@ export function createClientForm(
           {input(createClientValue, setCreateClientValue, "birthDate")}
         </div>
       </div>
-      <button
-        type="submit"
-        className="btn btn-primary my-3"
-        onClick={submitForm}
-      >
-        Submit
-      </button>
+      {submitBtn(submitForm)}
     </form>
   );
 }

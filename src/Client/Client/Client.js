@@ -5,6 +5,7 @@ import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { renderClientsArray, createClientBtn, searchEntry } from "./Display";
 import { searchClient } from "./SearchClient";
+import { createBtn } from "../../Utlis/Btn/CreateBtn";
 
 function useLogic() {
   const [clients, setClients] = useState(null);
@@ -57,7 +58,8 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="textCenter my-3">Client</h1>
-      {createClientBtn()}
+      {createBtn("client", "/createClient")}
+
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       {searchResult
         ? renderClientsArray(searchResult)

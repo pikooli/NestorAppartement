@@ -1,18 +1,7 @@
 import { showPicture } from "../../Utlis/ShowPicture";
 import { input } from "../../Utlis/Inputs";
 import { image } from "../../Utlis/Url";
-export function goBackBtn(id) {
-  return (
-    <div className="d-flex justify-content-end">
-      <a
-        className="btn btn-primary mb-3 "
-        href={id ? `/apartment/${id}` : `/createApartment/`}
-      >
-        Go back
-      </a>
-    </div>
-  );
-}
+import { submitBtn } from "../../Utlis/Btn/SubmitBtn";
 
 export function createRoomForm(
   createRoomValue,
@@ -25,13 +14,7 @@ export function createRoomForm(
       {input(createRoomValue, setCreateRoomValue, "number")}
       {input(createRoomValue, setCreateRoomValue, "area")}
       {input(createRoomValue, setCreateRoomValue, "price")}
-      <button
-        type="submit"
-        className="btn btn-primary mt-5"
-        onClick={submitForm}
-      >
-        Submit
-      </button>
+      {submitBtn(submitForm)}
     </form>
   );
 }

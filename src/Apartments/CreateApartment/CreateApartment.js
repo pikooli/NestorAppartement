@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import { createRoomBtn, createApartmentForm, resetBtn } from "./Display";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
-import { createResetBtn } from "../../Utlis/ResetBtn";
+import { createResetBtn } from "../../Utlis/Btn/ResetBtn";
 import { modalAlert, modalAlertError } from "../../Utlis/Alert";
 import ReduxActions from "../../Redux/Actions/ReduxActions";
+import { createBtn } from "../../Utlis/Btn/CreateBtn";
 
 function useLogic() {
   const [createApValue, setCreateApValue] = useState(ReduxActions.getAp());
   useEffect(() => {}, []);
+
+  function errorMessage() {
+    if (!createApValue.number) modalAlertError("You didn't give a number");
+    else if (!createApValue.name) modalAlertError("You didn't give a name");
+    else if (createApValue.rooms.length <= 0)
+      modalAlertError("It should have at least one room");
+    else modalAlertError("Don't know what went wrong");
+  }
 
   function submitForm(e) {
     e.preventDefault();
@@ -25,11 +34,7 @@ function useLogic() {
           window.location.href = "/";
         }
       });
-    else if (!createApValue.number) modalAlertError("You didn't give a number");
-    else if (!createApValue.name) modalAlertError("You didn't give a name");
-    else if (createApValue.rooms.length <= 0)
-      modalAlertError("It should have at least one room");
-    else modalAlertError("Don't know what went wrong");
+    else errorMessage();
   }
 
   function removeRoom(e, index) {
@@ -89,7 +94,7 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="textCenter my-3"> Create apartment</h1>
-      {createRoomBtn()}
+      {createBtn("room", "/createRoom/")}
       {createApartmentForm(
         createApValue,
         setName,

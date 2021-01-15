@@ -4,6 +4,7 @@ import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { renderBookingsDisplay, createBookingBtn } from "./Display";
 import { pagination, changePagination } from "../../Utlis/Pagination";
+import { createBtn } from "../../Utlis/Btn/CreateBtn";
 
 import { searchInput } from "./SearchBooking/SearchBookingForm";
 import { searchAlgorithm } from "./SearchBooking/SearchAlgorithm/SearchAlgorithm";
@@ -55,7 +56,7 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="text-center my-3">Bookings</h1>
-      {createBookingBtn()}
+      {createBtn("booking", "/createBooking")}
       {searchInput(searchValue, setSearchValue, triggerSearch)}
       {searchResult
         ? renderBookingsDisplay(searchResult)

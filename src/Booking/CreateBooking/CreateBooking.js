@@ -6,7 +6,7 @@ import Room from "./Room/Rooms";
 import reduxActions from "../../Redux/Actions/ReduxActions";
 import { createBookingBtn } from "./Display";
 import { modalAlert } from "../../Utlis/Alert";
-import { createResetBtn } from "../../Utlis/ResetBtn";
+import { createResetBtn } from "../../Utlis/Btn/ResetBtn";
 import { clientsThumbnail } from "./Client/Display";
 import { roomThumbnail } from "./Room/Display";
 

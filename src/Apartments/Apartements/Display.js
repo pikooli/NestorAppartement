@@ -3,20 +3,7 @@ import { input } from "../../Utlis/Inputs";
 import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
 import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
-
-export function createApartmentBtn() {
-  return (
-    <div className="d-flex justify-content-end">
-      <a
-        type="button"
-        className="btn btn-primary mb-3 "
-        href="/createApartment"
-      >
-        Create Apartement
-      </a>
-    </div>
-  );
-}
+import { searchBtn } from "../../Utlis/Btn/SearchBtn";
 
 export function apartmentDisplay(apartment) {
   if (!apartment) return null;
@@ -37,11 +24,11 @@ export function apartmentDisplay(apartment) {
           </div>
           <div className="col-sm text-dark">
             <h3>Ap N°{apartment.number}</h3>
-            {joinTextNormal("Apartment name", apartment.name)}
-            {joinTextNormal("Apartment street", apartment.street)}
-            {joinTextNormal("Apartment zipCode", apartment.zipCode)}
+            {joinTextNormal(" Name", apartment.name)}
+            {joinTextNormal("Street", apartment.street)}
+            {joinTextNormal("ZipCode", apartment.zipCode)}
             {joinTextNormal(
-              "Apartment nbRooms",
+              "NbRooms",
               apartment.rooms ? apartment.rooms.length : 0
             )}
           </div>
@@ -57,6 +44,7 @@ export function renderApartmentsArray(apartementArray) {
       return apartmentDisplay(apartment);
     });
 }
+
 //  search input
 
 export function searchEntry(searchValue, setSearchValue, triggerSearch) {
@@ -70,17 +58,7 @@ export function searchEntry(searchValue, setSearchValue, triggerSearch) {
 
         {input(searchValue, setSearchValue, "nbRooms")}
 
-        <div className="d-flex justify-content-center my-3">
-          <input
-            type="submit"
-            className="btn btn-primary "
-            value="Search"
-            onClick={(e) => {
-              e.preventDefault();
-              triggerSearch();
-            }}
-          ></input>
-        </div>
+        {searchBtn(triggerSearch)}
       </div>
     </form>
   );

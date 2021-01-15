@@ -23,7 +23,22 @@ function useLogic() {
   function triggerSearch() {
     setSearchResult(searchRoom(rooms, searchValue));
   }
-
+  function removeRoom(room, index) {
+    function createNewArray(currentRooms) {
+      let newRooms = currentRooms.map((oldRoom, key) => {
+        if (key === index) return null;
+        return oldRoom;
+      });
+      return newRooms;
+    }
+    if (index !== undefined)
+      api.delete(url.room.id(room.id)).then((data) => {
+        if (!data) return;
+        searchResult
+          ? setSearchResult(createNewArray)
+          : setDisplayRoomsArray(createNewArray);
+      });
+  }
   return {
     rooms,
     displayRoomsArray,
@@ -35,6 +50,7 @@ function useLogic() {
     setSearchResult,
     index,
     setIndex,
+    removeRoom,
   };
 }
 
@@ -50,6 +66,7 @@ export default function App({}) {
     setSearchResult,
     index,
     setIndex,
+    removeRoom,
   } = useLogic();
 
   return (
@@ -61,7 +78,7 @@ export default function App({}) {
       {searchEntry(searchValue, setSearchValue, triggerSearch)}
       {displayRooms(
         searchResult ? searchResult : displayRoomsArray,
-        searchResult ? setSearchResult : setDisplayRoomsArray
+        removeRoom
       )}
       {!searchResult
         ? changePagination(index, setIndex, setDisplayRoomsArray, rooms)

@@ -1,6 +1,7 @@
 import { searchClientInput } from "./SearchClientInputs";
 import { searchApartmentInput } from "./SearchApartmentInputs";
 import { searchRoomInput } from "./SearchRoomInputs";
+import { searchBtn } from "../../../Utlis/Btn/SearchBtn";
 
 export function searchInput(searchValue, setSearchValue, triggerSearch) {
   return (
@@ -8,17 +9,7 @@ export function searchInput(searchValue, setSearchValue, triggerSearch) {
       {searchApartmentInput(searchValue, setSearchValue)}
       {searchRoomInput(searchValue, setSearchValue)}
       {searchClientInput(searchValue, setSearchValue)}
-      <div className="d-flex justify-content-center my-3">
-        <input
-          type="submit"
-          className="btn btn-primary "
-          value="Search"
-          onClick={(e) => {
-            e.preventDefault();
-            triggerSearch();
-          }}
-        ></input>
-      </div>
+      {searchBtn(triggerSearch)}
     </form>
   );
 }
