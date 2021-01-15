@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, useParams } from "react-router-dom";
-import { apartmentDisplay, displayRooms, createRoomBtn } from "./Display";
+import { useParams } from "react-router-dom";
+import { apartmentDisplay, displayRooms } from "./Display";
 import ReduxActions from "../../Redux/Actions/ReduxActions";
 import { createBtn } from "../../Utlis/Btn/CreateBtn";
 
@@ -15,7 +15,7 @@ function useLogic() {
   return { id, apartment };
 }
 
-export default function App({}) {
+export default function App() {
   const { id, apartment } = useLogic();
 
   return (

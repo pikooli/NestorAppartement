@@ -4,7 +4,6 @@ import api from "../../../Utlis/ApiRequest";
 import { pagination, changePagination } from "../../../Utlis/Pagination";
 import { displayRooms, searchEntry } from "./Display";
 import { searchRoom } from "./SearchAlgorithm";
-import reduxActions from "../../../Redux/Actions/ReduxActions";
 
 function useLogic() {
   const [rooms, setRooms] = useState(null);

@@ -86,8 +86,7 @@ function deleteRoom(roomIndex) {
     return true;
   } else return false;
 }
-
-export default {
+const redux = {
   getState,
   reset,
   getAp,
@@ -105,3 +104,5 @@ export default {
   addRoom,
   deleteRoom,
 };
+
+export default redux;

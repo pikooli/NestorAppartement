@@ -7,7 +7,7 @@ import { searchBtn } from "../../Utlis/Btn/SearchBtn";
 export function clientDisplay(client) {
   if (!client) return null;
   return (
-    <li key={client.id} className="list-group-item" key={client.id}>
+    <li key={client.id} className="list-group-item">
       <a href={`client/${client.id}`} className="float-left container black">
         <div className="row">
           <div className="col-sm-2">{showPicture(image.client, "client")}</div>

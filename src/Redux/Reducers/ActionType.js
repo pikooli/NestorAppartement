@@ -1,4 +1,4 @@
-export default {
+const actionType = {
   setAp: "apartment",
   deleteAp: "deleteApartment",
 
@@ -14,3 +14,5 @@ export default {
   addRoom: "addRoom",
   reset: "reset",
 };
+
+export default actionType;

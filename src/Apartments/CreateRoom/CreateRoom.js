@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, useParams } from "react-router-dom";
-import { modalAlert, modalAlertError } from "../../Utlis/Alert";
+import { useParams } from "react-router-dom";
+import { modalAlertError } from "../../Utlis/Alert";
 import { createRoomForm } from "./Display";
 import { addingRoom } from "./Utils";
 import { goBackBtn } from "../../Utlis/Btn/GoBackBtn";
@@ -33,7 +33,7 @@ function useLogic() {
   return { createRoomValue, setCreateRoomValue, submitRoom, id };
 }
 
-export default function App({}) {
+export default function App() {
   const { createRoomValue, setCreateRoomValue, submitRoom, id } = useLogic();
   return (
     <div className="container">

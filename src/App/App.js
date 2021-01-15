@@ -141,7 +141,3 @@ export default function App() {
     </Router>
   );
 }
-
-function Home() {
-  return <h2>Home</h2>;
-}

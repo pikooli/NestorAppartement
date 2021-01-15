@@ -4,12 +4,7 @@ import api from "../../Utlis/ApiRequest";
 import { pagination, changePagination } from "../../Utlis/Pagination";
 import { createBtn } from "../../Utlis/Btn/CreateBtn";
 import { searchApartment } from "./SearchApartments";
-import {
-  createApartmentBtn,
-  apartmentDisplay,
-  searchEntry,
-  renderApartmentsArray,
-} from "./Display";
+import { searchEntry, renderApartmentsArray } from "./Display";
 
 function useLogic() {
   const [apartments, setApartments] = useState(null);

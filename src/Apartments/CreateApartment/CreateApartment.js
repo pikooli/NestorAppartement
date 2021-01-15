@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createRoomBtn, createApartmentForm, resetBtn } from "./Display";
+import { createApartmentForm } from "./Display";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
 import { createResetBtn } from "../../Utlis/Btn/ResetBtn";
@@ -81,7 +81,7 @@ function useLogic() {
   };
 }
 
-export default function App({}) {
+export default function App() {
   const {
     createApValue,
     setName,

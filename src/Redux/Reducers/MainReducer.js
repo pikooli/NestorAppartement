@@ -7,7 +7,7 @@ const initialState = {
   client: {},
 };
 
-export default function (state = initialState, action) {
+function mainReducer(state = initialState, action) {
   switch (action.type) {
     // aparment
     case ActionType.setAp:
@@ -91,3 +91,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default mainReducer;

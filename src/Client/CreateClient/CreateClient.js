@@ -52,7 +52,7 @@ function useLogic() {
   return { createClientValue, setCreateClientValue, submitForm };
 }
 
-export default function App({}) {
+export default function App() {
   const { createClientValue, setCreateClientValue, submitForm } = useLogic();
 
   return (

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { pagination, changePagination } from "../../Utlis/Pagination";
 import url from "../../Utlis/Url";
 import api from "../../Utlis/ApiRequest";
-import { renderClientsArray, createClientBtn, searchEntry } from "./Display";
+import { renderClientsArray, searchEntry } from "./Display";
 import { searchClient } from "./SearchClient";
 import { createBtn } from "../../Utlis/Btn/CreateBtn";
 
@@ -41,7 +40,7 @@ function useLogic() {
   };
 }
 
-export default function App({}) {
+export default function App() {
   const {
     clients,
     renderClientsArray,

@@ -54,7 +54,7 @@ function useLogic() {
   };
 }
 
-export default function App({}) {
+export default function App() {
   const {
     rooms,
     displayRoomsArray,
@@ -63,7 +63,6 @@ export default function App({}) {
     triggerSearch,
     setDisplayRoomsArray,
     searchResult,
-    setSearchResult,
     index,
     setIndex,
     removeRoom,

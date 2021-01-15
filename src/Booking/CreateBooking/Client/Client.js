@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { pagination, changePagination } from "../../../Utlis/Pagination";
 import url from "../../../Utlis/Url";
 import api from "../../../Utlis/ApiRequest";
 import { renderClientsArray, searchEntry } from "./Display";
 import { searchClient } from "./SearchClient";
-import reduxActions from "../../../Redux/Actions/ReduxActions";
 
 function useLogic() {
   const [clients, setClients] = useState(null);

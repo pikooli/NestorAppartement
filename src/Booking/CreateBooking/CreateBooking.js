@@ -47,7 +47,7 @@ function useLogic() {
   return { clientSave, saveClient, roomSave, saveRoom, triggerBooking, reset };
 }
 
-export default function App({}) {
+export default function App() {
   const {
     clientSave,
     saveClient,
