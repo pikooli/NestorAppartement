@@ -9,6 +9,7 @@ ReactJS v17.0.1 <br/>
 Bootstrap v5 <br/>
 
 ```
+Do "npm i"
 Launch with "npm start"
 ````
 
