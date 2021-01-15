@@ -3,10 +3,10 @@
 Website hosted with free plan heroku (can take some time to start, so if nothing show refresh please)
 
 work with 
-NodeJS v15.3.0
-Npm v7.0.14
-ReactJS v17.0.1
-Bootstrap v5
+NodeJS v15.3.0 <br/>
+Npm v7.0.14 <br/>
+ReactJS v17.0.1 <br/>
+Bootstrap v5 <br/>
 
 ```
 Launch with "npm start"
