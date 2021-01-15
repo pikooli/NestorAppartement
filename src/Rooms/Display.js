@@ -28,7 +28,7 @@ function displayRoom(room, index, removeFunction) {
 export function displayRooms(rooms, removeFunction) {
   if (!Array.isArray(rooms) || isArrayEmpty(rooms)) return null;
   return (
-    <div className="row mt-5 mb-3">
+    <div className="row mb-3">
       <div className="card mt-3">
         <ul className="list-group list-group-flush">
           {rooms.map((room, index) => displayRoom(room, index, removeFunction))}

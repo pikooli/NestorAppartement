@@ -1,58 +1,67 @@
 import { showPicture } from "../../Utlis/ShowPicture";
 import { image } from "../../Utlis/Url";
+import { joinTextNormal } from "../../Utlis/TextStyle/Normal";
+import { checkIfnull } from "../../Utlis/Compare";
 
-function displayHeader(booking) {
+function displayHeader(id, booking) {
   return (
     <div>
-      <span className="d-flex justify-content-end">{booking.updatedAt}</span>
+      <p className="d-flex justify-content-end"> {id}</p>
+      <p className="d-flex justify-content-end">{booking.updatedAt}</p>
     </div>
   );
 }
 
-function displayApartment(booking) {
+function displayApartment(apartment) {
   return (
-    <div className="col-sm-4 mb-3">
-      {showPicture(image.apartment, "building")}
+    <div className="col-sm ">
       <h5>Apartment</h5>
-      {booking.room.apartment.number} {booking.room.apartment.name}{" "}
-      {booking.room.apartment.street} {booking.room.apartment.zipCode}
+      {showPicture(image.apartment, "apartment")}
+      {joinTextNormal("Number", checkIfnull(apartment.number))}
+      {joinTextNormal("Name", checkIfnull(apartment.name))}
+      {joinTextNormal("Street", checkIfnull(apartment.street))}
+      {joinTextNormal("ZipCode", checkIfnull(apartment.zipCode))}
     </div>
   );
 }
 
-function displayRoom(booking) {
+function displayRoom(room) {
   return (
-    <div className="col-sm-4 mb-3">
-      {showPicture(image.room, "room")}
+    <div className="col-sm">
       <h5>Room</h5>
-      {booking.room.number} {booking.room.area} {booking.room.price}
+      {showPicture(image.room, "room")}
+      {joinTextNormal("Number", checkIfnull(room.number))}
+      {joinTextNormal("Area", checkIfnull(room.area))}
+      {joinTextNormal("Price", checkIfnull(room.price))}
     </div>
   );
 }
 
-function displayClient(booking) {
+function displayClient(client) {
   return (
-    <div className="col-sm-4 mb-3">
-      {showPicture(image.client, "client")}
+    <div className="col-sm">
       <h5>Client</h5>
-      {booking.client.firstName} {booking.client.lastName}{" "}
-      {booking.client.phone}
+      {showPicture(image.client, "client")}
+      {joinTextNormal("Number", checkIfnull(client.firstName))}
+      {joinTextNormal("Number", checkIfnull(client.lastName))}
+      {joinTextNormal("Number", checkIfnull(client.phone))}
     </div>
   );
 }
 
-export function bookingDisplay(booking) {
+export function bookingDisplay(id, booking) {
   if (!booking) return null;
+  console.log(booking);
   return (
-    <div key={booking.id} className="list-group-item ">
-      <a href={`booking/${booking.id}`} className="black">
-        {displayHeader(booking)}
-        <div className="row">
-          {displayApartment(booking)}
-          {displayRoom(booking)}
-          {displayClient(booking)}
-        </div>
-      </a>
+    <div>
+      {displayHeader(id, booking)}
+      <div className="row ">
+        {displayApartment(
+          booking.room && booking.room.apartment ? booking.room.apartment : {}
+        )}
+        {displayRoom(booking.room ? booking.room : {})}
+        {displayClient(booking.client ? booking.client : {})}
+      </div>
     </div>
   );
 }

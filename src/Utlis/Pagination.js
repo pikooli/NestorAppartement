@@ -1,3 +1,5 @@
+import { textSelected } from "./TextStyle/Selected";
+
 function checkNotEndIndex(index, newIndex, array) {
   if (
     newIndex >= 0 &&
@@ -45,14 +47,34 @@ export function changePagination(
               </button>
             </li>
           ) : null}
+          {checkNotEndIndex(index, index - 1, array) ? (
+            <li className="page-item">
+              <button
+                className="page-link"
+                onClick={() => changeIndex(index - 1)}
+              >
+                {index}
+              </button>
+            </li>
+          ) : null}
           <li className="page-item">
             <button
               className="page-link"
               onClick={() => changeIndex(index > 1 ? index : 1)}
             >
-              {index + 1}
+              {textSelected(index + 1)}
             </button>
           </li>
+          {checkNotEndIndex(index, index + 1, array) ? (
+            <li className="page-item">
+              <button
+                className="page-link"
+                onClick={() => changeIndex(index + 1)}
+              >
+                {index + 2}
+              </button>
+            </li>
+          ) : null}
           {checkNotEndIndex(index, index + 1, array) ? (
             <li className="page-item">
               <button

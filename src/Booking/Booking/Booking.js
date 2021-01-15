@@ -55,16 +55,17 @@ export default function App({}) {
   } = useLogic();
   return (
     <div className="container">
-      <h1 className="text-center my-3">Bookings</h1>
+      <h1 className="text-center my-3">List of bookings</h1>
       {createBtn("booking", "/createBooking")}
       {searchInput(searchValue, setSearchValue, triggerSearch)}
-      {searchResult
-        ? renderBookingsDisplay(searchResult)
-        : renderBookingsDisplay(displayBookings)}
-      {changePagination(index, setIndex, setDisplayBookings, bookings)}
+      <div className="mb-2">
+        {searchResult
+          ? renderBookingsDisplay(searchResult)
+          : renderBookingsDisplay(displayBookings)}
+      </div>
+      {!searchResult
+        ? changePagination(index, setIndex, setDisplayBookings, bookings)
+        : null}
     </div>
   );
 }
-
-// ;<Link to="/booking/aaaa">DetailsBooking</Link>
-/* <Link to="/createBooking">CreateEditBooking</Link> */

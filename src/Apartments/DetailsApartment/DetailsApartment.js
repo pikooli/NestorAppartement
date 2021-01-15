@@ -21,11 +21,11 @@ export default function App({}) {
   return (
     <div className="container">
       <h1 className="text-center my-3">Details Apartemnt</h1>
-      {createBtn("apartment", `/createRoom/${id}`)}
+      {createBtn("room", `/createRoom/${id}`)}
       <span className="d-flex justify-content-end">{id}</span>
       {apartmentDisplay(apartment)}
       <h3 className="my-3">List of Rooms</h3>
-      {displayRooms(apartment)}
+      <div className="mb-2">{displayRooms(apartment)}</div>
     </div>
   );
 }

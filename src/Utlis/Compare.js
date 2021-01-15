@@ -3,3 +3,8 @@ export function compareString(element, temoin) {
     return true;
   return false;
 }
+
+export function checkIfnull(obj) {
+  if (obj) return obj;
+  return "";
+}

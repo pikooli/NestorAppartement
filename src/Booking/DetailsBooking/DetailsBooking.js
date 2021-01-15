@@ -22,16 +22,16 @@ function useLogic() {
     });
   }, []);
 
-  return { booking };
+  return { id, booking };
 }
 
 export default function App({}) {
-  const { booking } = useLogic();
+  const { id, booking } = useLogic();
 
   return (
     <div className="container">
       <h1 className="text-center my-3">Details booking</h1>
-      {bookingDisplay(booking)}
+      {bookingDisplay(id, booking)}
     </div>
   );
 }

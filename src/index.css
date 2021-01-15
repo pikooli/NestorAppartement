@@ -87,3 +87,7 @@ a:hover {
     width: 100%;
   }
 }
+
+.overflow {
+  word-wrap: break-word;
+}

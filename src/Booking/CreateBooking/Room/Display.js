@@ -36,9 +36,9 @@ export function displayRoom(room, roomSave, saveRoom) {
 export function roomThumbnail(room) {
   if (!room) return null;
   return (
-    <div className="row ">
-      <div className="col-sm-3">{showPicture(image.room, "room")}</div>
-      <div className="col-sm">
+    <div className="row">
+      <div className="col-sm-3 ">{showPicture(image.room, "room")}</div>
+      <div className="col-sm overflow">
         {joinTextNormal("Number", room.number)}
         {joinTextNormal("Area", room.area)}
         {joinTextNormal("Price", room.price)}
