@@ -56,4 +56,8 @@ Show details of a booking
 /createBooking
 Allow to create a booking. it let you choice in the list of room and client
 `````
+<img width="400px" heigth="300px" src="gif/apartment.gif"></img><br/>
+<img width="400px" heigth="300px" src="gif/booking.gif"></img><br/>
+<img width="400px" heigth="300px" src="gif/client.gif"></img><br/>
+<img width="400px" heigth="300px" src="gif/room.gif"></img><br/>
 
